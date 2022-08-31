@@ -1,0 +1,62 @@
+body {
+    /* Set the default font family and font color for our application. */
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    color: #676767;
+    padding: 0 20px;
+
+}
+
+.header-bar {
+    align-items: center; 
+    width: 100%;
+    display: flex;
+}
+
+.logo {
+    flex: 0 0 auto; 
+    width: 200px; 
+    height: 200px;
+    margin: 0 30px;
+}
+
+.item-label {
+    margin: 0 0 0 30px;
+}
+
+.line {
+    flex: 1 0 auto;
+}
+
+.header-bar-text {
+    display: flex;
+    margin: 20px;
+}
+
+.products {
+    width: auto;
+    flex-grow: 1;
+    text-align: right;
+    padding: 0 100px 0 0;
+    /* background-color: pink; */
+}
+
+.cart {
+    margin-left: auto;
+    width: 90px;
+    flex-shrink: 0;
+    /* background-color: blue; */
+
+}
+
+.row {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+    /* ... */
+}
+
+.description {
+    margin: 20px 0;
+}
