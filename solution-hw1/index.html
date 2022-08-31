@@ -26,10 +26,10 @@
       <div class="line">
         <div class="header-bar-text">
           <div class="products">
-            Products
+            PRODUCTS
           </div>
           <div class="cart">
-            Cart
+            CART
           </div>
         </div>
         <hr>
@@ -46,8 +46,44 @@
 
     <div class="row">
       <div class="original">
-        <img class="logo" src="assets/original-cinnamon-roll.jpg" />
+        <img class="roll-image" src="assets/original-cinnamon-roll.jpg" />
         <h4 class="item-label"> Original cinnamon roll</h4>
+        <div class="roll-options">
+          <div class="roll">
+
+            <div class="item-content">
+              <div class="small-font">
+                Glazing:
+              </div>
+              <!-- dropdown code below cited from: https://www.w3schools.com/howto/howto_custom_select.asp -->
+              <div class="custom-select">
+                <select>
+                  <option value="0">Keep original</option>
+                  <option value="1">Sugar milk</option>
+                  <option value="2">Vanilla milk</option>
+                  <option value="3">Double chocolate</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="item-content">
+              <div class="small-font">
+                Pack size:
+              </div>
+              <button class="button" type="button">1</button>
+              <button class="button" type="button">3</button>
+              <button class="button" type="button">6</button>
+              <button class="button" type="button">12</button>
+            </div>
+          </div>
+
+          <div class="item-content">
+            <h4 class="item-label small-font"> $2.49</h4>
+            <button class="button-long" type="button">Add to Cart</button>
+          </div>
+        </div>
+        
+        </div>
       </div>
       <div class="apple">
         <p>Flex child</p>
