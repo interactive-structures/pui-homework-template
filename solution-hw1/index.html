@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <meta charset="UTF-8">
-  <title>PUI HW 1</title>
-  
   <head>
+    <meta charset="UTF-8">
     <title>PUI HW 1</title>    
-    
+  
     <!-- Our application uses the fonts "Roboto" and "Roboto Mono". These are
     not installed on every computer, so we link to them (from Google Fonts)
     in the section below. -->
@@ -17,15 +15,17 @@
       rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   
-    <link rel="stylesheet" href="css/style.css"
+    <link rel="stylesheet" href="css/style.css">
   </head>
-
+ 
   <body>
     <div class="header-bar">
-      <img class="logo" src="assets/logo-01.svg" />
-      <div class="line">
+      <img class="logo" alt="store-logo" src="assets/logo-01.svg" />
+      <!-- flex bar for the header -->
+      <div class="line"> 
         <div class="header-bar-text">
           <div class="products">
+            <!-- products highlights to be yellow when hovered over -->
             <span class="highlight"><b>PRODUCTS</b></span>
           </div>
           <div class="cart">
@@ -39,11 +39,14 @@
       </div>
     </div>
 
+    <!-- row of 3 cinnamon roll items -->
     <div class="row">
+      <!-- the row item div keeps the roll's information (glaze, pack size, price) in vertical, rather than horizontal, alignment -->
       <div class="row-item">
-        <img class="roll-image" src="assets/original-cinnamon-roll.jpg" />
+        <img class="roll-image" alt="original roll" src="assets/original-cinnamon-roll.jpg" />
         <h4 class="item-label"> Original cinnamon roll</h4>
           <div class="roll">
+            <!-- item content div holds the flexbox for each row of data -->
             <div class="item-content">
               <div class="small-font fixed-width">
                 Glazing:
@@ -69,13 +72,13 @@
             </div>
           </div>
           <div class="item-content large-divide">
-            <div class="item-label big-font fixed-width"> <b>$2.49</b></div>
+            <div class="item-label big-font fixed-width"><b>$2.49</b></div>
             <button class="button-long expand big-font" type="button"><b>Add to Cart</b></button>
           </div>
       </div>
 
       <div class="row-item">
-        <img class="roll-image" src="assets/apple-cinnamon-roll.jpg" />
+        <img class="roll-image" alt="apple roll" src="assets/apple-cinnamon-roll.jpg" />
         <h4 class="item-label"> Apple cinnamon roll</h4>
           <div class="roll">
             <div class="item-content">
@@ -109,7 +112,7 @@
       </div>
 
       <div class="row-item">
-        <img class="roll-image" src="assets/raisin-cinnamon-roll.jpg" />
+        <img class="roll-image" alt="raisin roll" src="assets/raisin-cinnamon-roll.jpg" />
         <h4 class="item-label"> Raisin cinnamon roll</h4>
           <div class="roll">
             <div class="item-content">
@@ -142,10 +145,10 @@
           </div>
       </div>
     </div>
-
+    <!-- new row of 3 cinnamon rolls -->
     <div class="row">
       <div class="row-item">
-        <img class="roll-image" src="assets/walnut-cinnamon-roll.jpg" />
+        <img class="roll-image" alt="walnut roll" src="assets/walnut-cinnamon-roll.jpg" />
         <div class="item-label big-font"> <b>Walnut cinnamon roll</b></div>
           <div class="roll">
             <div class="item-content">
@@ -179,7 +182,7 @@
       </div>
 
       <div class="row-item">
-        <img class="roll-image big-margin" src="assets/double-chocolate-cinnamon-roll.jpg" />
+        <img class="roll-image big-margin" alt="chocolate roll" src="assets/double-chocolate-cinnamon-roll.jpg" />
         <h4 class="item-label"> Double-chocolate cinnamon roll</h4>
           <div class="roll">
             <div class="item-content">
@@ -213,7 +216,7 @@
       </div>
 
       <div class="row-item">
-        <img class="roll-image" src="assets/strawberry-cinnamon-roll.jpg" />
+        <img class="roll-image" alt="strawberry roll" src="assets/strawberry-cinnamon-roll.jpg" />
         <h4 class="item-label"> Strawberry cinnamon roll</h4>
           <div class="roll">
             <div class="item-content">
