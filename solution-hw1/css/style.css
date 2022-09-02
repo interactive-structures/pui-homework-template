@@ -82,6 +82,7 @@ body {
 
 .highlight:hover {
     background-color: yellow;
+    font-weight: 700;
 }
 
 .item-content {
