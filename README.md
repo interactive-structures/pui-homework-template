@@ -1,5 +1,5 @@
 # Huarui Lai's PUI Homework
 
-Deployed website:`add the URL to your deployed website`
+Deployed website: https://hlai1.github.io/pui-assignments/
 
-Repository link: add the URL to this repository`
+Repository link: [add the URL to this repository`](https://github.com/hlai1/pui-assignments/tree/main)
