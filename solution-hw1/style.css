@@ -142,3 +142,9 @@ a:active {
 hr.solid {
     border-top: 3px solid black;
   }
+
+  #wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
