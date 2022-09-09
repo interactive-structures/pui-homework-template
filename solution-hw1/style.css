@@ -17,8 +17,41 @@ body {
 h1 {
     font-size: 13px;
     text-align: center;
+    color: black;
 }
 
-#cart{
+h2 {
+    font-size: 15px;
+    text-align: center;
+    color: rgb(73, 73, 73);
+}
+
+.not_selected_page{
     color: gray;
+}
+
+.menu_icon {
+    width: 100px;
+    border: 2px solid black;
+}
+
+.menu_icon{
+    padding: 10px 10px 10px 10px;
+    width: 100px;
+}
+
+.menu {
+    margin: auto;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: underline grey;
+}
+
+.menu_item {
+    margin: 0 auto;
+    width: 140px;
+    height: 190px;
+}
+
+.menu_item :hover {
+    background-color: yellow;
 }
