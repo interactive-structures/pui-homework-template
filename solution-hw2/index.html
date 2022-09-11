@@ -1,11 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
-  <meta charset="UTF-8">
-  <title>Page Title</title>
+  <head>
+    <meta charset="UTF-8">
+    <title>PUI HW 1</title>    
   
-  <body>
+    <!-- Our application uses the fonts "Roboto" and "Roboto Mono". These are
+    not installed on every computer, so we link to them (from Google Fonts)
+    in the section below. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,100;1,200&display=swap"
+      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  
+    <link rel="stylesheet" href="css/style.css">
 
-    <h1>I am the solution to HW2!</h1>
+    <script defer src="js/app.js"></script>
+  </head>
+ 
+  <body>
+    <div class="header-bar">
+      <img class="logo" alt="store-logo" src="assets/logo-01.svg" />
+      <!-- flex bar for the header -->
+      <div class="line"> 
+        <div class="header-bar-text">
+          <div class="products">
+            <!-- products highlights to be yellow when hovered over -->
+            <span class="highlight">PRODUCTS</span>
+          </div>
+          <div class="cart">CART</div>
+        </div>
+        <hr class="line-weight">
+        <div class="description">
+          Our hand-made cinnamon rolls
+        </div>
+      </div>
+    </div>
+
+    <!-- row of 3 cinnamon roll items -->
+    <div class="row">
+      <!-- the row item div keeps the roll's information (glaze, pack size, price) in vertical, rather than horizontal, alignment -->
+      <div class="row-item" id="item_1">
+        <img class="roll-image" alt="original roll" src="assets/original-cinnamon-roll.jpg" />
+        <h4 class="item-label"> Original cinnamon roll</h4>
+          <div class="roll">
+            <!-- item content div holds the flexbox for each row of data -->
+            <div class="item-content">
+              <div class="small-font fixed-width">
+                Glazing:
+              </div>
+              <!-- dropdown code below cited from: https://www.plus2net.com/javascript_tutorial/list-adding.php -->
+              <FORM name="drop_list" action="yourpage.php" method="POST">
+                <SELECT  NAME="Month_list" id="roll_list" class="expand custom-select">             
+                  <!-- <Option value="">Month list</option>            -->
+                </SELECT>      
+              </form>
+            </div>
+            <div class="item-content">
+              <div class="small-font fixed-width">
+                Pack size:
+              </div>
+              <div class="button-space">
+                <button class="button grey" type="button">1</button>
+                <button class="button" type="button">3</button>
+                <button class="button" type="button">6</button>
+                <button class="button" type="button">12</button>
+              </div>
+            </div>
+          </div>
+          <div class="item-content large-divide">
+            <div class="item-label big-font fixed-width"><b>$2.49</b></div>
+            <button class="button-long expand big-font" type="button"><b>Add to Cart</b></button>
+          </div>
+      </div>
+
+      <div class="row-item">
+        <img class="roll-image" alt="apple roll" src="assets/apple-cinnamon-roll.jpg" />
+        <h4 class="item-label"> Apple cinnamon roll</h4>
+          <div class="roll">
+            <div class="item-content">
+              <div class="small-font fixed-width">
+                Glazing:
+              </div>
+               <!-- dropdown code below cited from: https://www.plus2net.com/javascript_tutorial/list-adding.php -->
+               <FORM name="drop_list" action="yourpage.php" method="POST">
+                <SELECT  NAME="Month_list" id="roll_list1" class="expand custom-select">             
+                  <!-- <Option value="">Month list</option>            -->
+                </SELECT>      
+              </form>
+            </div>
+            <div class="item-content">
+              <div class="small-font fixed-width">
+                Pack size:
+              </div>
+              <div class="button-space">
+                <button class="button grey" type="button">1</button>
+                <button class="button" type="button">3</button>
+                <button class="button" type="button">6</button>
+                <button class="button" type="button">12</button>
+              </div>
+            </div>
+          </div>
+          <div class="item-content large-divide">
+            <div class="item-label big-font fixed-width"><b>$3.49</b></div>
+            <button class="button-long expand big-font" type="button"><b>Add to Cart</b></button>
+          </div>
+      </div>
+
+      <div class="row-item">
+        <img class="roll-image" alt="raisin roll" src="assets/raisin-cinnamon-roll.jpg" />
+        <h4 class="item-label"> Raisin cinnamon roll</h4>
+          <div class="roll">
+            <div class="item-content">
+              <div class="small-font fixed-width">
+                Glazing:
+              </div>
+              <!-- dropdown code below cited from: https://www.w3schools.com/howto/howto_custom_select.asp -->
+              <!-- <FORM name="drop_list" action="yourpage.php" method="POST">
+                <SELECT  NAME="Month_list">             
+                  <Option value="">Month list</option>           
+                </SELECT>      
+              </form> -->
+            </div>
+            <div class="item-content">
+              <div class="small-font fixed-width">
+                Pack size:
+              </div>
+              <div class="button-space">
+                <button class="button grey" type="button">1</button>
+                <button class="button" type="button">3</button>
+                <button class="button" type="button">6</button>
+                <button class="button" type="button">12</button>
+              </div>
+            </div>
+          </div>
+          <div class="item-content large-divide">
+            <div class="item-label big-font fixed-width"><b>$2.99</b></div>
+            <button class="button-long expand big-font" type="button"><b>Add to Cart</b></button>
+          </div>
+      </div>
+    </div>
+    <!-- new row of 3 cinnamon rolls -->
+    <div class="row">
+      <div class="row-item">
+        <img class="roll-image" alt="walnut roll" src="assets/walnut-cinnamon-roll.jpg" />
+        <div class="item-label big-font"> <b>Walnut cinnamon roll</b></div>
+          <div class="roll">
+            <div class="item-content">
+              <div class="small-font fixed-width">
+                Glazing:
+              </div>
+              <!-- dropdown code below cited from: https://www.w3schools.com/howto/howto_custom_select.asp -->
+              <!-- <FORM name="drop_list" action="yourpage.php" method="POST">
+                <SELECT  NAME="Month_list">             
+                  <Option value="">Month list</option>           
+                </SELECT>      
+              </form> -->
+            </div>
+            <div class="item-content">
+              <div class="small-font fixed-width">
+                Pack size:
+              </div>
+              <div class="button-space">
+                <button class="button grey" type="button">1</button>
+                <button class="button" type="button">3</button>
+                <button class="button" type="button">6</button>
+                <button class="button" type="button">12</button>
+              </div>
+            </div>
+          </div>
+          <div class="item-content large-divide">
+            <div class="item-label big-font fixed-width"><b>$3.49</b></div>
+            <button class="button-long expand big-font" type="button"><b>Add to Cart</b></button>
+          </div>
+      </div>
+
+      <div class="row-item">
+        <img class="roll-image big-margin" alt="chocolate roll" src="assets/double-chocolate-cinnamon-roll.jpg" />
+        <h4 class="item-label"> Double-chocolate cinnamon roll</h4>
+          <div class="roll">
+            <div class="item-content">
+              <div class="small-font fixed-width">
+                Glazing:
+              </div>
+              <!-- dropdown code below cited from: https://www.w3schools.com/howto/howto_custom_select.asp -->
+              <!-- <FORM name="drop_list" action="yourpage.php" method="POST">
+                <SELECT  NAME="Month_list">             
+                  <Option value="">Month list</option>           
+                </SELECT>      
+              </form> -->
+            </div>
+            <div class="item-content">
+              <div class="small-font fixed-width">
+                Pack size:
+              </div>
+              <div class="button-space">
+                <button class="button grey" type="button">1</button>
+                <button class="button" type="button">3</button>
+                <button class="button" type="button">6</button>
+                <button class="button" type="button">12</button>
+              </div>
+            </div>
+          </div>
+          <div class="item-content large-divide">
+            <div class="item-label big-font fixed-width"><b>$3.99</b></div>
+            <button class="button-long expand big-font" type="button"><b>Add to Cart</b></button>
+          </div>
+      </div>
+
+      <div class="row-item">
+        <img class="roll-image" alt="strawberry roll" src="assets/strawberry-cinnamon-roll.jpg" />
+        <h4 class="item-label"> Strawberry cinnamon roll</h4>
+          <div class="roll">
+            <div class="item-content">
+              <div class="small-font fixed-width">
+                Glazing:
+              </div>
+              <!-- <FORM name="drop_list1" action="yourpage.php" method="POST">
+                <SELECT  NAME="Month_list1" id="roll_list" class="expand custom-select">                 
+                </SELECT>      
+              </form> -->
+            </div>
+            <div class="item-content">
+              <div class="small-font fixed-width">
+                Pack size:
+              </div>
+              <div class="button-space">
+                <button class="button grey" type="button">1</button>
+                <button class="button" type="button">3</button>
+                <button class="button" type="button">6</button>
+                <button class="button" type="button">12</button>
+              </div>
+            </div>
+          </div>
+          <div class="item-content large-divide">
+            <div class="item-label big-font fixed-width"><b>$3.99</b></div>
+            <button class="button-long expand big-font" type="button"><b>Add to Cart</b></button>
+          </div>
+      </div>
+    </div>
 
   </body>
 </html>
