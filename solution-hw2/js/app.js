@@ -22,8 +22,8 @@ class Roll {
         console.log(this.displayPrice);
         console.log("");
         // Get the price element to update
-
-        let element = document.querySelector(this.elementID + "_price");
+        console.log(this.rollType)
+        let element = document.querySelector("#" + this.rollType + "_price");
         element.textContent = "$" + this.displayPrice.toFixed(2);
     }
 
@@ -41,6 +41,14 @@ function updateGlaze (element, roll){
 }
 
 function updateSize (element, roll, size){
+    let parent = document.querySelector("#" + roll + "-button-space");
+    //change background color to yellow
+    console.log(parent.button);
+    for (let button of parent.querySelectorAll("button")){
+        button.style.backgroundColor = "white";
+    }
+
+
     element.style.backgroundColor = 'lightgrey';
     rollDict[roll].packMultiplier = glazeDict[size];
     rollDict[roll].updatePrice(size);
@@ -92,7 +100,7 @@ const raisinRoll = new Roll(
 )
 
 const chocolateRoll = new Roll(
-    'chocolate',
+    'choc',
     3.99,
     0,
     1,
