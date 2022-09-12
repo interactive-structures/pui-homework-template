@@ -53,7 +53,7 @@
               </div>
               <!-- dropdown code below cited from: https://www.plus2net.com/javascript_tutorial/list-adding.php -->
               <FORM name="drop_list" action="yourpage.php" method="POST">
-                <SELECT  NAME="Month_list" id="roll_list" class="expand custom-select">             
+                <SELECT  NAME="Month_list" id="original_roll" class="expand custom-select">             
                   <!-- <Option value="">Month list</option>            -->
                 </SELECT>      
               </form>
@@ -63,10 +63,10 @@
                 Pack size:
               </div>
               <div class="button-space">
-                <button class="button grey" type="button">1</button>
-                <button class="button" type="button">3</button>
-                <button class="button" type="button">6</button>
-                <button class="button" type="button">12</button>
+                <button class="button grey" type="button" onclick="updatePrice(this, 1)">1</button>
+                <button class="button" type="button" id = "o3" onclick="updatePrice(this, 1)">3</button>
+                <button class="button" type="button" id = "o6" onclick="updatePrice(this, 1)">6</button>
+                <button class="button" type="button" id = "o12" onclick="updatePrice(this, 1)">12</button>
               </div>
             </div>
           </div>
@@ -86,7 +86,7 @@
               </div>
                <!-- dropdown code below cited from: https://www.plus2net.com/javascript_tutorial/list-adding.php -->
                <FORM name="drop_list" action="yourpage.php" method="POST">
-                <SELECT  NAME="Month_list" id="roll_list1" class="expand custom-select">             
+                <SELECT  NAME="Month_list" id="apple_roll" class="expand custom-select">             
                   <!-- <Option value="">Month list</option>            -->
                 </SELECT>      
               </form>
@@ -117,12 +117,12 @@
               <div class="small-font fixed-width">
                 Glazing:
               </div>
-              <!-- dropdown code below cited from: https://www.w3schools.com/howto/howto_custom_select.asp -->
-              <!-- <FORM name="drop_list" action="yourpage.php" method="POST">
-                <SELECT  NAME="Month_list">             
-                  <Option value="">Month list</option>           
+              <!-- dropdown code below cited from: https://www.plus2net.com/javascript_tutorial/list-adding.php -->
+              <FORM name="drop_list" action="yourpage.php" method="POST">
+                <SELECT  NAME="Month_list" id="raisin_roll" class="expand custom-select">             
+                  <!-- <Option value="">Month list</option>            -->
                 </SELECT>      
-              </form> -->
+              </form>
             </div>
             <div class="item-content">
               <div class="small-font fixed-width">
@@ -152,12 +152,12 @@
               <div class="small-font fixed-width">
                 Glazing:
               </div>
-              <!-- dropdown code below cited from: https://www.w3schools.com/howto/howto_custom_select.asp -->
-              <!-- <FORM name="drop_list" action="yourpage.php" method="POST">
-                <SELECT  NAME="Month_list">             
-                  <Option value="">Month list</option>           
+              <!-- dropdown code below cited from: https://www.plus2net.com/javascript_tutorial/list-adding.php -->
+              <FORM name="drop_list" action="yourpage.php" method="POST">
+                <SELECT  NAME="Month_list" id="walnut_roll" class="expand custom-select">             
+                  <!-- <Option value="">Month list</option>            -->
                 </SELECT>      
-              </form> -->
+              </form>
             </div>
             <div class="item-content">
               <div class="small-font fixed-width">
@@ -185,12 +185,12 @@
               <div class="small-font fixed-width">
                 Glazing:
               </div>
-              <!-- dropdown code below cited from: https://www.w3schools.com/howto/howto_custom_select.asp -->
-              <!-- <FORM name="drop_list" action="yourpage.php" method="POST">
-                <SELECT  NAME="Month_list">             
-                  <Option value="">Month list</option>           
+              <!-- dropdown code below cited from: https://www.plus2net.com/javascript_tutorial/list-adding.php -->
+              <FORM name="drop_list" action="yourpage.php" method="POST">
+                <SELECT  NAME="Month_list" id="choc_roll" class="expand custom-select">             
+                  <!-- <Option value="">Month list</option>            -->
                 </SELECT>      
-              </form> -->
+              </form>
             </div>
             <div class="item-content">
               <div class="small-font fixed-width">
@@ -218,10 +218,12 @@
               <div class="small-font fixed-width">
                 Glazing:
               </div>
-              <!-- <FORM name="drop_list1" action="yourpage.php" method="POST">
-                <SELECT  NAME="Month_list1" id="roll_list" class="expand custom-select">                 
-                </SELECT>      
-              </form> -->
+             <!-- dropdown code below cited from: https://www.plus2net.com/javascript_tutorial/list-adding.php -->
+             <FORM name="drop_list" action="yourpage.php" method="POST">
+              <SELECT  NAME="Month_list" id="strawberry_roll" class="expand custom-select">             
+                <!-- <Option value="">Month list</option>            -->
+              </SELECT>      
+            </form>
             </div>
             <div class="item-content">
               <div class="small-font fixed-width">
