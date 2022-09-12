@@ -3,7 +3,7 @@ class Roll {
         this.rollType = type;
         this.rollPrice = price;
         this.glazingPrice = glazing;
-        this.packSize = packSize;
+        this.packMultiplier = packSize;
         this.displayPrice = price;
 
         this.elementID = document.querySelector("#" + elementID);
@@ -14,28 +14,36 @@ class Roll {
         this.rollPrice += price;
     }
 
-    updatePrice(element, packSize){
-        const packMultiplier = 1;
-        if (packSize == 3){
-            packMultiplier = 3;
-        }
-        else if (packSize == 6) {
-            packMultiplier = 5;
-        }
-        else {
-            packMultiplier = 10;
-        }
-        element.style.backgroundColor = 'salmon';
-        element.style.color = 'white';
-        this.displayPrice = (this.basePrice + this.glazingPrice) * (packMultiplier); 
+    updatePrice(){
+        this.displayPrice = (this.rollPrice + this.glazingPrice) * (this.packMultiplier); 
+        console.log(this.rollPrice);
+        console.log(this.glazingPrice);
+        console.log(this.packMultiplier);
         console.log(this.displayPrice);
+        console.log("");
+        // Get the price element to update
+
+        let element = document.querySelector(this.elementID + "_price");
+        element.textContent = "$" + this.displayPrice.toFixed(2);
     }
 
     dropdownMenu(){
-        for (var i=0; i<glaze.length; i++){
+        for (var i = 0; i < glaze.length; i++){
             addOption(this.elementID, glaze[i]);  
         }
     }
+}
+
+function updateGlaze (element, roll){
+    const priceChange = parseFloat(element.value);
+    rollDict[roll].glazingPrice = priceChange;
+    rollDict[roll].updatePrice(priceChange);
+}
+
+function updateSize (element, roll, size){
+    element.style.backgroundColor = 'lightgrey';
+    rollDict[roll].packMultiplier = glazeDict[size];
+    rollDict[roll].updatePrice(size);
 }
 
 const original = {glazing: "Keep original", price: 0.00}
@@ -52,64 +60,73 @@ function addOption(selectbox, glazingOption){
     selectbox.options.add(optn);
 }
 
-const one = {size: 1, price: "*1"}
-const three = {size: 3, price: "*3"}
-const six = {size: 6, price: "*5"}
-const twelve = {size: 12, price: "*10"}
+var cartItems = [];
 
-var quantity = new Array(one, three, six, twelve);
+function updateCart(element){
 
-const btno1 = document.getElementById('o1');
-
-// btno1.addEventListener('click', function onClick() {
-    
-//   });
-
+    cartItems.push();
+}
 
 const originalRoll = new Roll(
     'original',
     2.49,
-    'keep original',
+    0,
     1,
     "original_roll"
 )
 
-const appleVanillaRoll = new Roll(
+const appleRoll = new Roll(
     'apple',
     3.49,
-    'vanilla milk',
-    3,
+    0,
+    1,
     "apple_roll"
 )
 
 const raisinRoll = new Roll(
     'raisin',
     3.49,
-    'keep original',
-    3,
+    0,
+    1,
     "raisin_roll"
 )
 
 const chocolateRoll = new Roll(
     'chocolate',
     3.99,
-    'double-chocolate',
-    6,
+    0,
+    1,
     "choc_roll"
 )
 
-const strawberrySugarRoll = new Roll(
+const strawberryRoll = new Roll(
     'strawberry',
     3.99,
-    'sugar milk',
-    12,
+    0,
+    1,
     "strawberry_roll"
 )
 
-const walnutSugarRoll = new Roll(
+const walnutRoll = new Roll(
     'walnut',
     3.99,
-    'sugar milk',
-    6,
+    0,
+    1,
     "walnut_roll"
 )
+
+let rollDict = {
+    "original": originalRoll,
+    "apple": appleRoll,
+    "raisin": raisinRoll,
+    "choc": chocolateRoll,
+    "strawberry": strawberryRoll,
+    "walnut": walnutRoll
+}
+
+let glazeDict = {
+    1: 1,
+    3: 3,
+    6: 5,
+    12: 10
+}

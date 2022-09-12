@@ -52,9 +52,8 @@
                 Glazing:
               </div>
               <!-- dropdown code below cited from: https://www.plus2net.com/javascript_tutorial/list-adding.php -->
-              <FORM name="drop_list" action="yourpage.php" method="POST">
-                <SELECT  NAME="Month_list" id="original_roll" class="expand custom-select">             
-                  <!-- <Option value="">Month list</option>            -->
+              <FORM name="drop_list" action="yourpage.php" method="POST"> 
+                <SELECT  NAME="Month_list" id="original_roll" class="expand custom-select" onchange="updateGlaze(this, 'original')"> 
                 </SELECT>      
               </form>
             </div>
@@ -62,16 +61,17 @@
               <div class="small-font fixed-width">
                 Pack size:
               </div>
-              <div class="button-space">
-                <button class="button grey" type="button" onclick="updatePrice(this, 1)">1</button>
-                <button class="button" type="button" id = "o3" onclick="updatePrice(this, 1)">3</button>
-                <button class="button" type="button" id = "o6" onclick="updatePrice(this, 1)">6</button>
-                <button class="button" type="button" id = "o12" onclick="updatePrice(this, 1)">12</button>
+              <!-- update it so parent  has an ID and clears all children's color and adds grey for sleected child -->
+              <div class="button-space" id="original-button-space">
+                <button class="button" type="button" onclick="updateSize(this, 'original', 1)">1</button>
+                <button class="button" type="button" onclick="updateSize(this, 'original', 3)">3</button>
+                <button class="button" type="button" onclick="updateSize(this, 'original', 6)">6</button>
+                <button class="button" type="button" onclick="updateSize(this, 'original', 12)">12</button>
               </div>
             </div>
           </div>
           <div class="item-content large-divide">
-            <div class="item-label big-font fixed-width"><b>$2.49</b></div>
+            <div id="original_roll_price" class="item-label big-font fixed-width bold">$2.49</div>
             <button class="button-long expand big-font" type="button"><b>Add to Cart</b></button>
           </div>
       </div>
@@ -85,9 +85,8 @@
                 Glazing:
               </div>
                <!-- dropdown code below cited from: https://www.plus2net.com/javascript_tutorial/list-adding.php -->
-               <FORM name="drop_list" action="yourpage.php" method="POST">
-                <SELECT  NAME="Month_list" id="apple_roll" class="expand custom-select">             
-                  <!-- <Option value="">Month list</option>            -->
+               <FORM name="drop_list" action="yourpage.php" method="POST"> 
+                <SELECT  NAME="Month_list" id="apple_roll" class="expand custom-select" onchange="updateGlaze(this, 'original')"> 
                 </SELECT>      
               </form>
             </div>
@@ -96,15 +95,15 @@
                 Pack size:
               </div>
               <div class="button-space">
-                <button class="button grey" type="button">1</button>
-                <button class="button" type="button">3</button>
-                <button class="button" type="button">6</button>
-                <button class="button" type="button">12</button>
+                <button class="button" type="button" onclick="updateSize(this, 'apple', 1)">1</button>
+                <button class="button" type="button" onclick="updateSize(this, 'apple', 3)">3</button>
+                <button class="button" type="button" onclick="updateSize(this, 'apple', 6)">6</button>
+                <button class="button" type="button" onclick="updateSize(this, 'apple', 12)">12</button>
               </div>
             </div>
           </div>
           <div class="item-content large-divide">
-            <div class="item-label big-font fixed-width"><b>$3.49</b></div>
+            <div id="apple_roll_price" class="item-label big-font fixed-width bold">$3.49</div>
             <button class="button-long expand big-font" type="button"><b>Add to Cart</b></button>
           </div>
       </div>
@@ -118,9 +117,8 @@
                 Glazing:
               </div>
               <!-- dropdown code below cited from: https://www.plus2net.com/javascript_tutorial/list-adding.php -->
-              <FORM name="drop_list" action="yourpage.php" method="POST">
-                <SELECT  NAME="Month_list" id="raisin_roll" class="expand custom-select">             
-                  <!-- <Option value="">Month list</option>            -->
+              <FORM name="drop_list" action="yourpage.php" method="POST"> 
+                <SELECT  NAME="Month_list" id="raisin_roll" class="expand custom-select" onchange="updateGlaze(this, 'original')"> 
                 </SELECT>      
               </form>
             </div>
@@ -129,15 +127,15 @@
                 Pack size:
               </div>
               <div class="button-space">
-                <button class="button grey" type="button">1</button>
-                <button class="button" type="button">3</button>
-                <button class="button" type="button">6</button>
-                <button class="button" type="button">12</button>
+                <button class="button" type="button" onclick="updateSize(this, 'raisin', 1)">1</button>
+                <button class="button" type="button" onclick="updateSize(this, 'raisin', 3)">3</button>
+                <button class="button" type="button" onclick="updateSize(this, 'raisin', 6)">6</button>
+                <button class="button" type="button" onclick="updateSize(this, 'raisin', 12)">12</button>
               </div>
             </div>
           </div>
           <div class="item-content large-divide">
-            <div class="item-label big-font fixed-width"><b>$2.99</b></div>
+            <div id="raisin_roll_price" class="item-label big-font fixed-width bold">$2.99</div>
             <button class="button-long expand big-font" type="button"><b>Add to Cart</b></button>
           </div>
       </div>
@@ -153,9 +151,8 @@
                 Glazing:
               </div>
               <!-- dropdown code below cited from: https://www.plus2net.com/javascript_tutorial/list-adding.php -->
-              <FORM name="drop_list" action="yourpage.php" method="POST">
-                <SELECT  NAME="Month_list" id="walnut_roll" class="expand custom-select">             
-                  <!-- <Option value="">Month list</option>            -->
+              <FORM name="drop_list" action="yourpage.php" method="POST"> 
+                <SELECT  NAME="Month_list" id="walnut_roll" class="expand custom-select" onchange="updateGlaze(this, 'original')"> 
                 </SELECT>      
               </form>
             </div>
@@ -164,15 +161,15 @@
                 Pack size:
               </div>
               <div class="button-space">
-                <button class="button grey" type="button">1</button>
-                <button class="button" type="button">3</button>
-                <button class="button" type="button">6</button>
-                <button class="button" type="button">12</button>
+                <button class="button" type="button" onclick="updateSize(this, 'walnut', 1)">1</button>
+                <button class="button" type="button" onclick="updateSize(this, 'walnut', 3)">3</button>
+                <button class="button" type="button" onclick="updateSize(this, 'walnut', 6)">6</button>
+                <button class="button" type="button" onclick="updateSize(this, 'walnut', 12)">12</button>
               </div>
             </div>
           </div>
           <div class="item-content large-divide">
-            <div class="item-label big-font fixed-width"><b>$3.49</b></div>
+            <div id="walnut_roll_price" class="item-label big-font fixed-width bold">$3.49</div>
             <button class="button-long expand big-font" type="button"><b>Add to Cart</b></button>
           </div>
       </div>
@@ -186,9 +183,8 @@
                 Glazing:
               </div>
               <!-- dropdown code below cited from: https://www.plus2net.com/javascript_tutorial/list-adding.php -->
-              <FORM name="drop_list" action="yourpage.php" method="POST">
-                <SELECT  NAME="Month_list" id="choc_roll" class="expand custom-select">             
-                  <!-- <Option value="">Month list</option>            -->
+              <FORM name="drop_list" action="yourpage.php" method="POST"> 
+                <SELECT  NAME="Month_list" id="choc_roll" class="expand custom-select" onchange="updateGlaze(this, 'original')"> 
                 </SELECT>      
               </form>
             </div>
@@ -197,15 +193,15 @@
                 Pack size:
               </div>
               <div class="button-space">
-                <button class="button grey" type="button">1</button>
-                <button class="button" type="button">3</button>
-                <button class="button" type="button">6</button>
-                <button class="button" type="button">12</button>
+                <button class="button" type="button" onclick="updateSize(this, 'choc', 1)">1</button>
+                <button class="button" type="button" onclick="updateSize(this, 'choc', 3)">3</button>
+                <button class="button" type="button" onclick="updateSize(this, 'choc', 6)">6</button>
+                <button class="button" type="button" onclick="updateSize(this, 'choc', 12)">12</button>
               </div>
             </div>
           </div>
           <div class="item-content large-divide">
-            <div class="item-label big-font fixed-width"><b>$3.99</b></div>
+            <div id="choc_roll_price" class="item-label big-font fixed-width bold">$3.99</div>
             <button class="button-long expand big-font" type="button"><b>Add to Cart</b></button>
           </div>
       </div>
@@ -219,9 +215,8 @@
                 Glazing:
               </div>
              <!-- dropdown code below cited from: https://www.plus2net.com/javascript_tutorial/list-adding.php -->
-             <FORM name="drop_list" action="yourpage.php" method="POST">
-              <SELECT  NAME="Month_list" id="strawberry_roll" class="expand custom-select">             
-                <!-- <Option value="">Month list</option>            -->
+             <FORM name="drop_list" action="yourpage.php" method="POST"> 
+              <SELECT  NAME="Month_list" id="strawberry_roll" class="expand custom-select" onchange="updateGlaze(this, 'original')"> 
               </SELECT>      
             </form>
             </div>
@@ -230,15 +225,15 @@
                 Pack size:
               </div>
               <div class="button-space">
-                <button class="button grey" type="button">1</button>
-                <button class="button" type="button">3</button>
-                <button class="button" type="button">6</button>
-                <button class="button" type="button">12</button>
+                <button class="button" type="button" onclick="updateSize(this, 'strawberry', 1)">1</button>
+                <button class="button" type="button" onclick="updateSize(this, 'strawberry', 3)">3</button>
+                <button class="button" type="button" onclick="updateSize(this, 'strawberry', 6)">6</button>
+                <button class="button" type="button" onclick="updateSize(this, 'strawberry', 12)">12</button>
               </div>
             </div>
           </div>
           <div class="item-content large-divide">
-            <div class="item-label big-font fixed-width"><b>$3.99</b></div>
+            <div id="strawberry_roll_price" class="item-label big-font fixed-width bold">$3.99</div>
             <button class="button-long expand big-font" type="button"><b>Add to Cart</b></button>
           </div>
       </div>
