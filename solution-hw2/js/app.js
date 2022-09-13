@@ -1,9 +1,11 @@
 class Roll {
-    constructor(type, price, glazing, packSize, elementID) {
+    constructor(type, price, glazingName, glazingPrice, packSize, elementID) {
         this.rollType = type;
         this.rollPrice = price;
-        this.glazingPrice = glazing;
+        this.glazingName = glazingName;
+        this.glazingPrice = glazingPrice;
         this.packMultiplier = packSize;
+        this.packSize = packSize;
         this.displayPrice = price;
 
         this.elementID = document.querySelector("#" + elementID);
@@ -16,13 +18,14 @@ class Roll {
 
     updatePrice(){
         this.displayPrice = (this.rollPrice + this.glazingPrice) * (this.packMultiplier); 
-        console.log(this.rollPrice);
-        console.log(this.glazingPrice);
-        console.log(this.packMultiplier);
-        console.log(this.displayPrice);
-        console.log("");
-        // Get the price element to update
-        console.log(this.rollType);
+        // console.log(this.rollPrice);
+        // console.log(this.glazingName);
+        // console.log(this.glazingPrice);
+        // console.log(this.packMultiplier);
+        // console.log(this.displayPrice);
+        // // Get the price element to update
+        // console.log(this.rollType);
+        // console.log("");
         let element = document.querySelector("#" + this.rollType + "_price");
         element.textContent = "$" + this.displayPrice.toFixed(2);
     }
@@ -36,6 +39,15 @@ class Roll {
 
 function updateGlaze (element, roll){
     const priceChange = parseFloat(element.value);
+
+    var e = document.getElementById(roll + "_roll");
+    var text = e.options[e.selectedIndex].text;
+    // console.log(value);
+    // console.log(text);
+
+    // console.log("p: " + element.value);
+    // console.log("n:  " + x );
+    rollDict[roll].glazingName = text;
     rollDict[roll].glazingPrice = priceChange;
     rollDict[roll].updatePrice(priceChange);
 }
@@ -47,9 +59,9 @@ function updateSize (element, roll, size){
         button.style.backgroundColor = "white";
     }
 
-
     element.style.backgroundColor = 'lightgrey';
     rollDict[roll].packMultiplier = packDict[size];
+    rollDict[roll].packSize = size;
     rollDict[roll].updatePrice(size);
 }
 
@@ -57,6 +69,13 @@ const original = {glazing: "Keep original", price: 0.00}
 const sugar = {glazing: "Sugar milk", price: 0.00}
 const vanilla = {glazing: "Vanilla milk", price: 0.50}
 const chocolate = {glazing: "Double chocolate", price: 1.50}
+
+let glazeDict = {
+    "Keep original": 0,
+    "Sugar milk": 0,
+    "Vanilla milk": 0.50,
+    "Double chocolate": 1.50
+}
 
 var glaze = new Array(original, sugar, vanilla, chocolate);
 
@@ -67,15 +86,38 @@ function addOption(selectbox, glazingOption){
     selectbox.options.add(optn);
 }
 
-var cartItems = [];
+var cartItems = []; //original_cart
 
-function updateCart(element){
-    cartItems.push();
+function updateCart(roll){
+    cartItems.push(rollDict[roll]);
+    console.log(cartItems);
+
+    let item = document.querySelector("#item-count");
+    if (cartItems.length == 1){
+        item.textContent = (cartItems.length + " item");
+    }
+    else{
+        item.textContent = (cartItems.length + " items");
+    }
+    let totalCost = document.querySelector("#total-cost");
+    let total = 0;
+
+    console.log("total: " + total);
+    
+    for (let cost of cartItems.displayPrice){
+        total += cost;
+        console.log("total: " + total);
+        
+    }
+    totalCost.textContent = ("$" + total);
+    
 }
 
+//created 6 distinct roll objects--one for each type displayed in the shop
 const originalRoll = new Roll(
     'original',
     2.49,
+    "Keep original",
     0,
     1,
     "original_roll"
@@ -84,6 +126,7 @@ const originalRoll = new Roll(
 const appleRoll = new Roll(
     'apple',
     3.49,
+    "Keep original",
     0,
     1,
     "apple_roll"
@@ -91,7 +134,8 @@ const appleRoll = new Roll(
 
 const raisinRoll = new Roll(
     'raisin',
-    3.49,
+    2.99,
+    "Keep original",
     0,
     1,
     "raisin_roll"
@@ -100,6 +144,7 @@ const raisinRoll = new Roll(
 const walnutRoll = new Roll(
     'walnut',
     3.49,
+    "Keep original",
     0,
     1,
     "walnut_roll"
@@ -108,6 +153,7 @@ const walnutRoll = new Roll(
 const chocolateRoll = new Roll(
     'choc',
     3.99,
+    "Keep original",
     0,
     1,
     "choc_roll"
@@ -116,6 +162,7 @@ const chocolateRoll = new Roll(
 const strawberryRoll = new Roll(
     'strawberry',
     3.99,
+    "Keep original",
     0,
     1,
     "strawberry_roll"

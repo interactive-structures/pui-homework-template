@@ -30,7 +30,11 @@
             <!-- products highlights to be yellow when hovered over -->
             <span class="highlight">PRODUCTS</span>
           </div>
-          <div class="cart">CART</div>
+          <div class="cart">
+            <div> CART </div>
+            <div class="small-font right-align" id="item-count"> 0 items </div>
+            <div class="small-font right-align" id="total-cost"> Total: $0 </div>
+          </div>
         </div>
         <hr class="line-weight">
         <div class="description">
@@ -53,7 +57,7 @@
               </div>
               <!-- dropdown code below cited from: https://www.plus2net.com/javascript_tutorial/list-adding.php -->
               <FORM name="drop_list" action="yourpage.php" method="POST"> 
-                <SELECT  NAME="Month_list" id="original_roll" class="expand custom-select" onchange="updateGlaze(this, 'original')"> 
+                <SELECT  NAME="Glaze_list" id="original_roll" class="expand custom-select" onchange="updateGlaze(this, 'original')"> 
                 </SELECT>      
               </form>
             </div>
@@ -72,7 +76,7 @@
           </div>
           <div class="item-content large-divide">
             <div id="original_price" class="item-label big-font fixed-width bold">$2.49</div>
-            <button class="button-long expand big-font bold" type="button">Add to Cart</button>
+            <button class="button-long expand big-font bold" type="button" onclick="updateCart('original')">Add to Cart</button>
           </div>
       </div>
 

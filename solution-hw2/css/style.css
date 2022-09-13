@@ -48,6 +48,7 @@ body {
 .cart {
     width: 90px;
     flex: 0 1 auto;
+    text-align: right;
 }
 
 .custom-select { /* border for the select menu */
@@ -83,7 +84,7 @@ body {
 
 .header-bar-text {
     display: flex;
-    margin: 40px 20px;
+    margin: 0 20px;
 }
 
 .highlight:hover {
@@ -130,7 +131,7 @@ body {
 .products {
     flex: 1 0 auto;
     text-align: right;
-    margin: 0 100px 0 0;
+    margin: 0 50px;
 }
 
 .roll-image {
