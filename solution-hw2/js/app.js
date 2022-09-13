@@ -22,7 +22,7 @@ class Roll {
         console.log(this.displayPrice);
         console.log("");
         // Get the price element to update
-        console.log(this.rollType)
+        console.log(this.rollType);
         let element = document.querySelector("#" + this.rollType + "_price");
         element.textContent = "$" + this.displayPrice.toFixed(2);
     }
@@ -43,14 +43,13 @@ function updateGlaze (element, roll){
 function updateSize (element, roll, size){
     let parent = document.querySelector("#" + roll + "-button-space");
     //change background color to yellow
-    console.log(parent.button);
     for (let button of parent.querySelectorAll("button")){
         button.style.backgroundColor = "white";
     }
 
 
     element.style.backgroundColor = 'lightgrey';
-    rollDict[roll].packMultiplier = glazeDict[size];
+    rollDict[roll].packMultiplier = packDict[size];
     rollDict[roll].updatePrice(size);
 }
 
@@ -71,7 +70,6 @@ function addOption(selectbox, glazingOption){
 var cartItems = [];
 
 function updateCart(element){
-
     cartItems.push();
 }
 
@@ -99,6 +97,14 @@ const raisinRoll = new Roll(
     "raisin_roll"
 )
 
+const walnutRoll = new Roll(
+    'walnut',
+    3.49,
+    0,
+    1,
+    "walnut_roll"
+)
+
 const chocolateRoll = new Roll(
     'choc',
     3.99,
@@ -115,14 +121,6 @@ const strawberryRoll = new Roll(
     "strawberry_roll"
 )
 
-const walnutRoll = new Roll(
-    'walnut',
-    3.99,
-    0,
-    1,
-    "walnut_roll"
-)
-
 let rollDict = {
     "original": originalRoll,
     "apple": appleRoll,
@@ -132,7 +130,7 @@ let rollDict = {
     "walnut": walnutRoll
 }
 
-let glazeDict = {
+let packDict = {
     1: 1,
     3: 3,
     6: 5,
