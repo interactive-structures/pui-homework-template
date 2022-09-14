@@ -157,3 +157,18 @@ body {
 .small-font {
     font-size: 14px;
 }
+
+
+
+.alert {
+    width: 200px;
+    height: 100px;
+    line-height: 100px;
+    background-color: red;
+    color: white;
+    text-align: center;
+  }
+
+  .hide {
+    display: none;
+  }

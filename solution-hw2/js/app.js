@@ -37,6 +37,8 @@ class Roll {
     }
 }
 
+var cartTotal = 0;
+
 function updateGlaze (element, roll){
     const priceChange = parseFloat(element.value);
 
@@ -86,6 +88,12 @@ function addOption(selectbox, glazingOption){
     selectbox.options.add(optn);
 }
 
+function showPopup(roll){
+    document.getElementById('PopUpText').textContent = "blahblahblah";
+    setTimeout(() => document.querySelector('#PopUpText').classList.add('hide'), 3000);
+    updateCart(roll);
+}
+
 var cartItems = []; //original_cart
 
 function updateCart(roll){
@@ -100,17 +108,11 @@ function updateCart(roll){
         item.textContent = (cartItems.length + " items");
     }
     let totalCost = document.querySelector("#total-cost");
-    let total = 0;
 
-    console.log("total: " + total);
-    
-    for (let cost of cartItems.displayPrice){
-        total += cost;
-        console.log("total: " + total);
-        
-    }
-    totalCost.textContent = ("$" + total);
-    
+    cartTotal += rollDict[roll].displayPrice;
+    // console.log("adding: " + rollDict[roll].displayPrice);
+    // console.log("final: " + cartTotal);
+    totalCost.textContent = ("Total: $" + cartTotal.toFixed(2));
 }
 
 //created 6 distinct roll objects--one for each type displayed in the shop
