@@ -11,21 +11,9 @@ class Roll {
         this.elementID = document.querySelector("#" + elementID);
         this.dropdownMenu();
     }
-    
-    priceAdapt(price){
-        this.rollPrice += price;
-    }
 
     updatePrice(){
         this.displayPrice = (this.rollPrice + this.glazingPrice) * (this.packMultiplier); 
-        // console.log(this.rollPrice);
-        // console.log(this.glazingName);
-        // console.log(this.glazingPrice);
-        // console.log(this.packMultiplier);
-        // console.log(this.displayPrice);
-        // // Get the price element to update
-        // console.log(this.rollType);
-        // console.log("");
         let element = document.querySelector("#" + this.rollType + "_price");
         element.textContent = "$" + this.displayPrice.toFixed(2);
     }
@@ -44,11 +32,7 @@ function updateGlaze (element, roll){
 
     var e = document.getElementById(roll + "_roll");
     var text = e.options[e.selectedIndex].text;
-    // console.log(value);
-    // console.log(text);
 
-    // console.log("p: " + element.value);
-    // console.log("n:  " + x );
     rollDict[roll].glazingName = text;
     rollDict[roll].glazingPrice = priceChange;
     rollDict[roll].updatePrice(priceChange);
@@ -56,15 +40,15 @@ function updateGlaze (element, roll){
 
 function updateSize (element, roll, size){
     let parent = document.querySelector("#" + roll + "-button-space");
-    //change background color to white
+    //change background color of all the buttons in the group of 4 to be white
     for (let button of parent.querySelectorAll("button")){
         button.style.backgroundColor = "white";
     }
-
+    //change background color of selected button to be grey
     element.style.backgroundColor = 'lightgrey';
     rollDict[roll].packMultiplier = packDict[size];
     rollDict[roll].packSize = size;
-    rollDict[roll].updatePrice(size);
+    rollDict[roll].updatePrice(size); //update price of pack according to new size
 }
 
 const original = {glazing: "Keep original", price: 0.00}
@@ -72,7 +56,7 @@ const sugar = {glazing: "Sugar milk", price: 0.00}
 const vanilla = {glazing: "Vanilla milk", price: 0.50}
 const chocolate = {glazing: "Double chocolate", price: 1.50}
 
-let glazeDict = {
+let glazeDict = { //corresponding glaze names with prices
     "Keep original": 0,
     "Sugar milk": 0,
     "Vanilla milk": 0.50,
@@ -81,7 +65,7 @@ let glazeDict = {
 
 var glaze = new Array(original, sugar, vanilla, chocolate);
 
-function addOption(selectbox, glazingOption){
+function addOption(selectbox, glazingOption){ //populates selectbox
     var optn = document.createElement("OPTION");
     optn.text = glazingOption.glazing;
     optn.value = glazingOption.price;
@@ -96,7 +80,7 @@ let displayRollType = {
     "choc": "Chocolate cinnamon roll",
     "strawberry": "Strawberry cinnamon roll"
 }
-function showPopup(roll){
+function showPopup(roll){ //updates popup with each selected roll's information
     document.getElementById('PopupText').style.display = 'block';
 
     document.getElementById('roll-name').textContent = displayRollType[roll];
@@ -104,8 +88,10 @@ function showPopup(roll){
     document.getElementById('roll-size').textContent = "Pack of " + rollDict[roll].packSize;
     document.getElementById('roll-price').textContent = "Price: $" + rollDict[roll].displayPrice.toFixed(2);
     
+    //hides the popup after 3 seconds
     setTimeout(() => document.getElementById('PopupText').style.display = 'none', 3000);
 
+    //updates the cart information
     updateCart(roll);
 }
 
@@ -125,8 +111,6 @@ function updateCart(roll){
     let totalCost = document.querySelector("#total-cost");
 
     cartTotal += rollDict[roll].displayPrice;
-    // console.log("adding: " + rollDict[roll].displayPrice);
-    // console.log("final: " + cartTotal);
     totalCost.textContent = ("Total: $" + cartTotal.toFixed(2));
 }
 
@@ -185,6 +169,7 @@ const strawberryRoll = new Roll(
     "strawberry_roll"
 )
 
+//dictionary of roll names as keys and objects as values
 let rollDict = {
     "original": originalRoll,
     "apple": appleRoll,
@@ -194,6 +179,7 @@ let rollDict = {
     "walnut": walnutRoll
 }
 
+//dictionary of pack size as keys and pack multiplier as values
 let packDict = {
     1: 1,
     3: 3,

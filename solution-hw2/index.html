@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>PUI HW 1</title>    
+    <title>PUI HW 2</title>    
   
     <!-- Our application uses the fonts "Roboto" and "Roboto Mono". These are
     not installed on every computer, so we link to them (from Google Fonts)
@@ -32,7 +32,7 @@
           </div>
           <div class="cart">
             <div class = "cart-text"> CART </div>
-
+            <!-- shows the popup message when "add to cart" button is clicked -->
             <div class ="popup" id="PopupText">
               <div class="small-font"> Added to cart: </div><br/>
               <div class="small-font bold" id="roll-name"> Raisin cinnamon roll </div>
@@ -65,6 +65,7 @@
                 Glazing:
               </div>
               <!-- dropdown code below cited from: https://www.plus2net.com/javascript_tutorial/list-adding.php -->
+              <!-- when user selects a glaze, respective glazing option is passed onto and recorded in the .js file -->
               <FORM name="drop_list" action="yourpage.php" method="POST"> 
                 <SELECT  NAME="Glaze_list" id="original_roll" class="expand custom-select" onchange="updateGlaze(this, 'original')"> 
                 </SELECT>      
@@ -74,7 +75,7 @@
               <div class="small-font fixed-width">
                 Pack size:
               </div>
-              <!-- update it so parent  has an ID and clears all children's color and adds grey for sleected child -->
+              <!-- respective pack size is passed onto and recorded in the .js file when button is clicked -->
               <div class="button-space" id="original-button-space">
                 <button class="button" type="button" onclick="updateSize(this, 'original', 1)">1</button>
                 <button class="button" type="button" onclick="updateSize(this, 'original', 3)">3</button>
@@ -85,6 +86,7 @@
           </div>
           <div class="item-content large-divide">
             <div id="original_price" class="item-label big-font fixed-width bold">$2.49</div>
+            <!-- shows popup message when user clicks "add to cart button" -->
             <button class="button-long expand big-font bold" type="button" onclick="showPopup('original')">Add to Cart</button>
           </div>
       </div>
