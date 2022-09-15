@@ -56,7 +56,7 @@ function updateGlaze (element, roll){
 
 function updateSize (element, roll, size){
     let parent = document.querySelector("#" + roll + "-button-space");
-    //change background color to yellow
+    //change background color to white
     for (let button of parent.querySelectorAll("button")){
         button.style.backgroundColor = "white";
     }
@@ -88,13 +88,28 @@ function addOption(selectbox, glazingOption){
     selectbox.options.add(optn);
 }
 
+let displayRollType = {
+    "original": "Original cinnamon roll",
+    "apple": "Apple cinnamon roll",
+    "raisin": "Raisin cinnamon roll",
+    "walnut": "Walnut cinnamon roll",
+    "choc": "Chocolate cinnamon roll",
+    "strawberry": "Strawberry cinnamon roll"
+}
 function showPopup(roll){
-    document.getElementById('PopUpText').textContent = "blahblahblah";
-    setTimeout(() => document.querySelector('#PopUpText').classList.add('hide'), 3000);
+    document.getElementById('PopupText').style.display = 'block';
+
+    document.getElementById('roll-name').textContent = displayRollType[roll];
+    document.getElementById('roll-glazing').textContent = rollDict[roll].glazingName + " glazing";
+    document.getElementById('roll-size').textContent = "Pack of " + rollDict[roll].packSize;
+    document.getElementById('roll-price').textContent = "Price: $" + rollDict[roll].displayPrice.toFixed(2);
+    
+    setTimeout(() => document.getElementById('PopupText').style.display = 'none', 3000);
+
     updateCart(roll);
 }
 
-var cartItems = []; //original_cart
+var cartItems = [];
 
 function updateCart(roll){
     cartItems.push(rollDict[roll]);

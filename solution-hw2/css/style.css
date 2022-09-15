@@ -172,3 +172,24 @@ body {
   .hide {
     display: none;
   }
+
+  .popup {
+    width: 175px;
+    text-align: left;
+    outline: solid darkgrey;
+    background-color: white;
+    padding: 4px;
+
+    position: fixed;
+    right: 100px;
+    z-index: 2;
+    display: none;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .show {
+    display: inline;
+  }

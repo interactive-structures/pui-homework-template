@@ -31,8 +31,16 @@
             <span class="highlight">PRODUCTS</span>
           </div>
           <div class="cart">
-            <div> CART </div>
-            <div id="PopUpText">TEXT</div> 
+            <div class = "cart-text"> CART </div>
+
+            <div class ="popup" id="PopupText">
+              <div class="small-font"> Added to cart: </div><br/>
+              <div class="small-font bold" id="roll-name"> Raisin cinnamon roll </div>
+              <div class="small-font" id="roll-glazing"> Double chocolate glazing </div>
+              <div class="small-font" id="roll-size"> Pack of 6 </div>
+              <div class="small-font" id="roll-price"> Price: $22.45 </div>
+            </div>
+            
             <div class="small-font right-align" id="item-count"> 0 items </div>
             <div class="small-font right-align" id="total-cost"> Total: $0 </div>
           </div>
@@ -109,7 +117,7 @@
           </div>
           <div class="item-content large-divide">
             <div id="apple_price" class="item-label big-font fixed-width bold">$3.49</div>
-            <button class="button-long expand big-font bold" type="button" onclick="updateCart('apple')">Add to Cart</button>
+            <button class="button-long expand big-font bold" type="button" onclick="showPopup('apple')">Add to Cart</button>
           </div>
       </div>
 
@@ -141,7 +149,7 @@
           </div>
           <div class="item-content large-divide">
             <div id="raisin_price" class="item-label big-font fixed-width bold">$2.99</div>
-            <button class="button-long expand big-font bold" type="button" onclick="updateCart('raisin')">Add to Cart</button>
+            <button class="button-long expand big-font bold" type="button" onclick="showPopup('raisin')">Add to Cart</button>
           </div>
       </div>
     </div>
@@ -175,7 +183,7 @@
           </div>
           <div class="item-content large-divide">
             <div id="walnut_price" class="item-label big-font fixed-width bold">$3.49</div>
-            <button class="button-long expand big-font bold" type="button" onclick="updateCart('walnut')">Add to Cart</button>
+            <button class="button-long expand big-font bold" type="button" onclick="showPopup('walnut')"Add to Cart</button>
           </div>
       </div>
 
@@ -207,7 +215,7 @@
           </div>
           <div class="item-content large-divide">
             <div id="choc_price" class="item-label big-font fixed-width bold">$3.99</div>
-            <button class="button-long expand big-font bold" type="button" onclick="updateCart('choc')">Add to Cart</button>
+            <button class="button-long expand big-font bold" type="button" onclick="showPopup('choc')">Add to Cart</button>
           </div>
       </div>
 
@@ -239,7 +247,7 @@
           </div>
           <div class="item-content large-divide">
             <div id="strawberry_price" class="item-label big-font fixed-width bold">$3.99</div>
-            <button class="button-long expand big-font bold" type="button" onclick="updateCart('strawberry')">Add to Cart</button>
+            <button class="button-long expand big-font bold" type="button" onclick="showPopup('strawberry')">Add to Cart</button>
           </div>
       </div>
     </div>
