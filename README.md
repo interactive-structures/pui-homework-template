@@ -1,4 +1,4 @@
-# Huarui Lai's PUI Homework
+# Huarui Lai's PUI:E Homework
 
 Deployed website: https://hlai1.github.io/pui-assignments/
 
