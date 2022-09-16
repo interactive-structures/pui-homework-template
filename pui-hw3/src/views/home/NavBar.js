@@ -15,7 +15,7 @@ class NavBar extends Component {
             </div>
             <hr className="line-weight" />
                 <div className="description">
-                Our hand-made cinnamon rolls
+                  Our hand-made cinnamon rolls
                 </div>
             </div>
         </div>

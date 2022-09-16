@@ -4,7 +4,7 @@ import NavBar from './NavBar';
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <NavBar 
         logo="assets/logo-01.svg"/>
 
