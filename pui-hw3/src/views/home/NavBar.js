@@ -8,10 +8,10 @@ class NavBar extends Component {
             <img className="logo" alt="store-logo" src={this.props.logo} />
             <div className="line"> 
             <div className="header-bar-text">
-                <div className="products">
+              <div className="products">
                 <span className="highlight">PRODUCTS</span>
-                </div>
-                <div className="cart">CART</div>
+              </div>
+              <div className="cart">CART</div>
             </div>
             <hr className="line-weight" />
                 <div className="description">
