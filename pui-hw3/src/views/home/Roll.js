@@ -5,7 +5,7 @@ class Roll extends Component {
   render() {
     return (
       <div className="row-item">
-        <img className="roll-image" alt="original roll" src={this.props.imageURL} />
+        <img className="roll-image" alt="cinnamon roll" src={this.props.imageURL} />
         <h4 className="item-label"> {this.props.name} </h4>
           <div className="roll">
             <div className="item-content">

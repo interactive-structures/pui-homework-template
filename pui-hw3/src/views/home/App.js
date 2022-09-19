@@ -2,43 +2,42 @@ import './App.css';
 import Roll from './Roll';
 import NavBar from './NavBar';
 
-
 function App() {
   return (
-    <div className="App">
+    <body>
       <NavBar 
-        logo="assets/logo-01.svg"/>
+        logo="/pui-assignments/pui-hw3/assets/logo-01.svg" />
 
       <div className="row">
         <Roll 
-          imageURL="assets/original-cinnamon-roll.jpg"
+          imageURL="/pui-assignments/pui-hw3/assets/original-cinnamon-roll.jpg"
           name="Original cinnamon roll"
           price="$2.49"/>
         <Roll 
-          imageURL="assets/apple-cinnamon-roll.jpg"
+          imageURL="/pui-assignments/pui-hw3/assets/apple-cinnamon-roll.jpg"
           name="Apple cinnamon roll"
           price="$3.49"/>
         <Roll 
-          imageURL="assets/raisin-cinnamon-roll.jpg"
+          imageURL="/pui-assignments/pui-hw3/assets/raisin-cinnamon-roll.jpg"
           name="Raisin cinnamon roll"
           price="$2.99"/>
       </div>
 
       <div className="row">
         <Roll 
-          imageURL="assets/walnut-cinnamon-roll.jpg"
+          imageURL="/pui-assignments/pui-hw3/assets/walnut-cinnamon-roll.jpg"
           name="Walnut cinnamon roll"
           price="$3.49"/>
         <Roll 
-          imageURL="assets/double-chocolate-cinnamon-roll.jpg"
+          imageURL="/pui-assignments/pui-hw3/assets/double-chocolate-cinnamon-roll.jpg"
           name="Double-chocolate cinnamon roll"
           price="$3.99"/>
         <Roll 
-          imageURL="assets/strawberry-cinnamon-roll.jpg"
+          imageURL="/pui-assignments/pui-hw3/assets/strawberry-cinnamon-roll.jpg"
           name="Strawberry cinnamon roll"
           price="$3.99"/>
       </div>
-    </div>
+    </body>
 
   );
 }

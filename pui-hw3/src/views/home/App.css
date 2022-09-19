@@ -16,6 +16,5 @@ body {
 /* display for a row of items (cinnamon rolls) */
 .row {
   display: flex;
-  align-items: center;
   justify-content: center; 
 }
