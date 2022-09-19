@@ -9,6 +9,7 @@ function App() {
         logo="/pui-assignments/pui-hw3/assets/logo-01.svg" />
 
       <div className="row">
+        {/* 3 cinnamon rolls displayed per row, pass in corresponding image, name, price */}
         <Roll 
           imageURL="/pui-assignments/pui-hw3/assets/original-cinnamon-roll.jpg"
           name="Original cinnamon roll"
@@ -24,6 +25,7 @@ function App() {
       </div>
 
       <div className="row">
+        {/* 3 cinnamon rolls displayed per row, pass in corresponding image, name, price */}
         <Roll 
           imageURL="/pui-assignments/pui-hw3/assets/walnut-cinnamon-roll.jpg"
           name="Walnut cinnamon roll"
