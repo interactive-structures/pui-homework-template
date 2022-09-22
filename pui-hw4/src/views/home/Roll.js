@@ -7,7 +7,7 @@ class Roll extends Component {
       <div className="row-item">
         {/* displays cinnamon roll image along with name */}
         <img className="roll-image" alt="cinnamon roll" src={this.props.imageURL} />
-        <h4 className="item-label"> {this.props.name} </h4>
+        <h4 className="item-label"> {this.props.rollName} </h4>
           <div className="roll">
             <div className="item-content">
               <div className="small-font fixed-width">
@@ -35,7 +35,7 @@ class Roll extends Component {
             </div>
           </div>
           <div className="item-content large-divide">
-            <div className="item-label big-font fixed-width bold">{this.props.price}</div>
+            <div className="item-label big-font fixed-width bold">{"$"+this.props.rollPrice}</div>
             <button className="button-long expand big-font bold" type="button">Add to Cart</button>
           </div>
       </div>

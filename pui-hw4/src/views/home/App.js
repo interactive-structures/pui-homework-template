@@ -10,6 +10,7 @@ class App extends Component {
       rollData: [
         {
           imageURL: "/assets/original-cinnamon-roll.jpg",
+          rollName: "Original cinnamon roll",
           rollType: "original",
           rollPrice: 2.49,
           glazingName: "Keep original",
@@ -20,6 +21,7 @@ class App extends Component {
         },
         {
           imageURL: "/assets/apple-cinnamon-roll.jpg",
+          rollName: "Apple cinnamon roll",
           rollType: "apple",
           rollPrice: 3.49,
           glazingName: "Keep original",
@@ -30,6 +32,7 @@ class App extends Component {
         },
         {
           imageURL: "/assets/raisin-cinnamon-roll.jpg",
+          rollName: "Raisin cinnamon roll",
           rollType: "raisin",
           rollPrice: 2.99,
           glazingName: "Keep original",
@@ -40,6 +43,7 @@ class App extends Component {
         },
         {
           imageURL: "/assets/walnut-cinnamon-roll.jpg",
+          rollName: "Walnut cinnamon roll",
           rollType: "walnut",
           rollPrice: 3.49,
           glazingName: "Keep original",
@@ -50,6 +54,7 @@ class App extends Component {
         },
         {
           imageURL: "/assets/double-chocolate-cinnamon-roll.jpg",
+          rollName: "Chocolate cinnamon roll",
           rollType: "choc",
           rollPrice: 3.99,
           glazingName: "Keep original",
@@ -60,6 +65,7 @@ class App extends Component {
         },
         {
           imageURL: "/assets/strawberry-cinnamon-roll.jpg",
+          rollName: "Strawberry cinnamon roll",
           rollType: "strawberry",
           rollPrice: 3.99,
           glazingName: "Keep original",
@@ -69,6 +75,10 @@ class App extends Component {
           elementID: "strawberry_roll"
         },
       ],
+    
+      selectedGlaze: "",
+      selectedPackSize: "",
+      displayPrice: ""
     }
   }
   render() {
@@ -81,6 +91,7 @@ class App extends Component {
           {/* 3 cinnamon rolls displayed per row, pass in corresponding image, name, price */}
           <Roll 
              imageURL={this.state.rollData[0].imageURL}
+             rollName={this.state.rollData[0].rollName}
              rollType={this.state.rollData[0].rollType}
              rollPrice={this.state.rollData[0].rollPrice}
              glazingName={this.state.rollData[0].glazingName}
@@ -90,6 +101,7 @@ class App extends Component {
              elementID={this.state.rollData[0].elementID} />
           <Roll 
             imageURL={this.state.rollData[1].imageURL}
+            rollName={this.state.rollData[1].rollName}
             rollType={this.state.rollData[1].rollType}
             rollPrice={this.state.rollData[1].rollPrice}
             glazingName={this.state.rollData[1].glazingName}
@@ -99,6 +111,7 @@ class App extends Component {
             elementID={this.state.rollData[1].elementID} />
           <Roll 
             imageURL={this.state.rollData[2].imageURL}
+            rollName={this.state.rollData[2].rollName}
             rollType={this.state.rollData[2].rollType}
             rollPrice={this.state.rollData[2].rollPrice}
             glazingName={this.state.rollData[2].glazingName}
@@ -112,6 +125,7 @@ class App extends Component {
           {/* 3 cinnamon rolls displayed per row, pass in corresponding image, name, price */}
           <Roll 
             imageURL={this.state.rollData[3].imageURL}
+            rollName={this.state.rollData[3].rollName}
             rollType={this.state.rollData[3].rollType}
             rollPrice={this.state.rollData[3].rollPrice}
             glazingName={this.state.rollData[3].glazingName}
@@ -121,6 +135,7 @@ class App extends Component {
             elementID={this.state.rollData[3].elementID} />
           <Roll 
             imageURL={this.state.rollData[4].imageURL}
+            rollName={this.state.rollData[4].rollName}
             rollType={this.state.rollData[4].rollType}
             rollPrice={this.state.rollData[4].rollPrice}
             glazingName={this.state.rollData[4].glazingName}
@@ -130,6 +145,7 @@ class App extends Component {
             elementID={this.state.rollData[4].elementID} />
           <Roll 
             imageURL={this.state.rollData[5].imageURL}
+            rollName={this.state.rollData[5].rollName}
             rollType={this.state.rollData[5].rollType}
             rollPrice={this.state.rollData[5].rollPrice}
             glazingName={this.state.rollData[5].glazingName}
