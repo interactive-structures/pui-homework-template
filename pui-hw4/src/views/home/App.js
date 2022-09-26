@@ -14,7 +14,7 @@ class App extends Component {
           rollType: "original",
           rollPrice: 2.49,
           glazingName: "Keep original",
-          packMultiplier: 0,
+          packMultiplier: 1,
           packSize: 1,
           displayPrice: 2.49,
           elementID: "original_roll"
@@ -25,7 +25,7 @@ class App extends Component {
           rollType: "apple",
           rollPrice: 3.49,
           glazingName: "Keep original",
-          packMultiplier: 0,
+          packMultiplier: 1,
           packSize: 1,
           displayPrice: 3.49,
           elementID: "apple_roll"
@@ -36,7 +36,7 @@ class App extends Component {
           rollType: "raisin",
           rollPrice: 2.99,
           glazingName: "Keep original",
-          packMultiplier: 0,
+          packMultiplier: 1,
           packSize: 1,
           displayPrice: 2.99,
           elementID: "raisin_roll"
@@ -47,7 +47,7 @@ class App extends Component {
           rollType: "walnut",
           rollPrice: 3.49,
           glazingName: "Keep original",
-          packMultiplier: 0,
+          packMultiplier: 1,
           packSize: 1,
           displayPrice: 3.49,
           elementID: "walnut_roll"
@@ -58,7 +58,7 @@ class App extends Component {
           rollType: "choc",
           rollPrice: 3.99,
           glazingName: "Keep original",
-          packMultiplier: 0,
+          packMultiplier: 1,
           packSize: 1,
           displayPrice: 3.99,
           elementID: "choc_roll"
@@ -68,19 +68,23 @@ class App extends Component {
           rollName: "Strawberry cinnamon roll",
           rollType: "strawberry",
           rollPrice: 3.99,
-          glazingName: "Keep original",
-          packMultiplier: 0,
-          packSize: 1,
-          displayPrice: 3.99,
+          // glazingName: "Keep original",
+          // packMultiplier: 1,
+          // packSize: 1,
+          // displayPrice: 3.99,
           elementID: "strawberry_roll"
         },
       ],
     
-      selectedGlaze: "",
-      selectedPackSize: "",
-      displayPrice: ""
+      
+
+
+      // selectedGlaze: "",
+      // selectedPackSize: "",
+      // displayPrice: ""
     }
   }
+
   render() {
     return (
       <div className="App">
