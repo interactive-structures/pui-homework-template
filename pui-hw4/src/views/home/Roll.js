@@ -93,12 +93,14 @@ class Roll extends Component {
   }
 
   changePackSize(e) {
-    let parent = document.querySelector("#button-click");
+    let parent = document.querySelector("#button-color");
     //change background color of all the buttons in the group of 4 to be white
     for (let button of parent.querySelectorAll("button")){
         button.style.backgroundColor = "white";
+        console.log("white");
     }
   //change background color of selected button to be grey
+  
   e.target.style.backgroundColor='lightgrey';
     this.setState(prevState => ({
       ...prevState,
@@ -108,7 +110,6 @@ class Roll extends Component {
 
   //returns the roll with updated pack size, glazing, and display price to App.js
   createFinalRoll(){
-    console.log("test: " + this.state.packIndex);
     return{
         rollName: this.props.rollName,
         glazingName: this.state.glazingName,
@@ -142,7 +143,7 @@ class Roll extends Component {
                 Pack size:
               </div>
               {/* pack size options */}
-              <div className="button-space" id="button-click">
+              <div className="button-space" id="button-color">
                 <button className="button" type="button" onClick={this.changePackSize} value={1}>1</button>
                 <button className="button" type="button" onClick={this.changePackSize} value={3}>3</button>
                 <button className="button" type="button" onClick={this.changePackSize} value={6}>6</button>
