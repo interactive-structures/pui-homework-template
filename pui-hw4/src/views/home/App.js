@@ -7,6 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // roll array with six objects--one of each type of cinnamon roll
       rollData: [
         {
           imageURL: "/assets/original-cinnamon-roll.jpg",
@@ -66,6 +67,7 @@ class App extends Component {
     this.cartItems = cartItems;
   }
 
+  // function below displays the popup for 3 seconds when the user clicks "Add to Cart" button
   showPopup = (roll) => {
     document.getElementById('PopupText').style.display = 'block';
     document.getElementById('roll-name').textContent = roll.rollName;
@@ -75,6 +77,7 @@ class App extends Component {
     setTimeout(() => document.getElementById('PopupText').style.display = 'none', 3000);
   }
 
+  // function below displays the cart item and price totals after items are added
   addCartButton = (roll) => {
     this.showPopup(roll);
     this.cartItems.push(roll);
@@ -91,6 +94,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        {/* header bar for the Bun Bun Shop webpage */}
         <NavBar 
           logo="/assets/logo-01.svg" 
           cartItems={this.cartItems.length}

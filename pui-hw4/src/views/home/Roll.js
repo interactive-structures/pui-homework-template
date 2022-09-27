@@ -4,6 +4,7 @@ import './Roll.css';
 class Roll extends Component {
   constructor(props) {
     super(props);
+    // standard selected glazing option and pack size selected
     this.state = {
       glazingIndex: 0,
       glazingName: "Keep original",
@@ -25,7 +26,7 @@ class Roll extends Component {
       "Double chocolate": 1.50
     }
 
-    let packDict = {
+    let packDict = { //corresponding pack sizes with multipliers
       1: 1,
       3: 3,
       6: 5,
@@ -43,6 +44,7 @@ class Roll extends Component {
     this.getPackMultiplier = this.getPackMultiplier.bind(this);
   }
 
+  // getter functions for price, pack multiplier, pack size, and display price
   getGlazingPrice(index){
     return this.glazeDict[this.glazeIndexDict[index]];
   }
@@ -55,6 +57,14 @@ class Roll extends Component {
     return index;
   }
 
+  getDisplayPrice() {
+    if (this.state.displayPrice != null) {
+      return this.state.displayPrice;
+    }
+    return this.props.displayPrice;
+  }
+
+  // setter functions for price, glazing, and pack size
   changePriceDelay(e){
     console.log("final price: " + this.state.displayPrice);
   }
@@ -78,7 +88,6 @@ class Roll extends Component {
     }), () => this.changeGlazingDelay(e))    
   }
 
-  //functions for changing price go here
   changePackSizeDelay(e) {
     this.changePrice(e);
   }
@@ -89,24 +98,15 @@ class Roll extends Component {
     for (let button of parent.querySelectorAll("button")){
         button.style.backgroundColor = "white";
     }
-  //   for (let button of document.querySelector("#button-click").querySelectorAll("button")){
-  //     button.style.backgroundColor = "white";
-  // }
-  e.target.style.backgroundColor='lightgrey';
   //change background color of selected button to be grey
+  e.target.style.backgroundColor='lightgrey';
     this.setState(prevState => ({
       ...prevState,
       packIndex: e.target.value, 
     }), () => this.changePackSizeDelay(e))
   }
 
-  getDisplayPrice() {
-    if (this.state.displayPrice != null) {
-      return this.state.displayPrice;
-    }
-    return this.props.displayPrice;
-  }
-
+  //returns the roll with updated pack size, glazing, and display price to App.js
   createFinalRoll(){
     console.log("test: " + this.state.packIndex);
     return{
