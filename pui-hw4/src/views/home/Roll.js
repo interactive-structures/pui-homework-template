@@ -6,24 +6,26 @@ class Roll extends Component {
     super(props);
     this.state = {
       glazingIndex: 0,
+      glazingName: "Keep original",
       packIndex: 1,
-      displayPrice: 0
+      displayPrice: null
     }
-    var glazeIndexDict = {
+
+    let glazeIndexDict = {
       0: "Keep original",
       1: "Sugar milk",
       2: "Vanilla milk",
       3: "Double chocolate"
     }
 
-    var glazeDict = { //corresponding glaze names with prices
+    let glazeDict = { //corresponding glaze names with prices
       "Keep original": 0,
       "Sugar milk": 0,
       "Vanilla milk": 0.50,
       "Double chocolate": 1.50
     }
 
-    var packDict = {
+    let packDict = {
       1: 1,
       3: 3,
       6: 5,
@@ -37,65 +39,83 @@ class Roll extends Component {
     this.changeGlazing = this.changeGlazing.bind(this);
     this.changePrice = this.changePrice.bind(this);
     this.changePackSize = this.changePackSize.bind(this);
+    this.getGlazingPrice = this.getGlazingPrice.bind(this);
+    this.getPackMultiplier = this.getPackMultiplier.bind(this);
   }
-  
+
+  getGlazingPrice(index){
+    return this.glazeDict[this.glazeIndexDict[index]];
+  }
+
+  getPackMultiplier(index){
+    return this.packDict[index];
+  }
+
+  getPackSize(index){
+    return index;
+  }
+
+  changePriceDelay(e){
+    console.log("final price: " + this.state.displayPrice);
+  }
+
   changePrice(e) {
-    // this.displayPrice = (this.props.rollPrice + this.props.glazingPrice) * (this.packMultiplier); 
-    // this.setState(prevState => ({
-    //   ...prevState,
-    //   displayPrice: this.displayPrice, 
-    // }))
-    
-    console.log("glazing price: " + this.glazeDict[this.glazeIndexDict[this.state.glazingIndex]]);
-    console.log("roll price: " + this.props.rollPrice);
-    console.log(this.state.packIndex);
-    console.log("pack multiplier: " + this.packDict[this.state.packIndex]);
-    // this.props.glazingPrice = this.glazeDict[this.glazeIndexDict[this.state.glazingIndex]];
-    // this.props.rollPrice = (this.props.rollPrice + this.glazeDict[this.glazeIndexDict[this.state.glazingIndex]]) * (this.props.packMultiplier);
-    console.log((this.props.rollPrice + this.glazeDict[this.glazeIndexDict[this.state.glazingIndex]]) * this.packDict[this.state.packIndex]);
     this.setState(prevState => ({
       ...prevState,
-      displayPrice: (this.props.rollPrice + this.glazeDict[this.glazeIndexDict[this.state.glazingIndex]]) * this.packDict[this.state.packIndex], 
-    })) 
-    console.log("final price: " + this.state.displayPrice);
+      displayPrice: (this.props.rollPrice + this.getGlazingPrice(this.state.glazingIndex)) * this.getPackMultiplier(this.state.packIndex), 
+    }), () => this.changePriceDelay(e)) 
+  }
+
+  changeGlazingDelay(e) {
+    this.changePrice(e);
   }
 
   changeGlazing(e) {
     this.setState(prevState => ({
       ...prevState,
-      glazingIndex: e.target.value, 
-    })) 
-    console.log(e.target.value);
-    console.log("glazing: " +  this.glazeDict[this.glazeIndexDict[this.state.glazingIndex]]);
-    //this.props.glazingPrice = this.glazeDict[this.glazeIndexDict[this.state.glazingIndex]];
+      glazingIndex: e.target.value,
+      glazingName: this.glazeIndexDict[e.target.value]
+    }), () => this.changeGlazingDelay(e))    
+  }
+
+  //functions for changing price go here
+  changePackSizeDelay(e) {
     this.changePrice(e);
   }
-  //functions for changing price go here
 
   changePackSize(e) {
+  console.log("CHILD: " + e.target.children);
+  for (var button of document.querySelector("#button-click").children){
+      button.style.backgroundColor="white";
+  }
+  //   for (let button of document.querySelector("#button-click").querySelectorAll("button")){
+  //     button.style.backgroundColor = "white";
+  // }
+  e.target.style.backgroundColor='lightgrey';
+  //change background color of selected button to be grey
     this.setState(prevState => ({
       ...prevState,
       packIndex: e.target.value, 
-    }))
-    console.log("pack size: " + e.target.value);
-    this.changePrice(e);
+    }), () => this.changePackSizeDelay(e))
   }
 
+  getDisplayPrice() {
+    if (this.state.displayPrice != null) {
+      return this.state.displayPrice;
+    }
+    return this.props.displayPrice;
+  }
 
-    // dummyTestFunction() {
-  //   console.log()this)
-  //   this.setState(prevState => ({
-  //     ...prevState,
-  //     glazingIndex: 0
-  //   }
-  //   ))
-  //   console.log(this.state)
-  // }
-
-
-  // selectedGlaze: "",
-  // selectedPackSize: "",
-  // displayPrice: ""
+  createFinalRoll(){
+    console.log("test: " + this.state.packIndex);
+    return{
+        rollName: this.props.rollName,
+        glazingName: this.state.glazingName,
+        packSize: this.state.packIndex,
+        displayPrice: this.getDisplayPrice(),
+        elementID: this.props.elementID
+      }
+  }
 
   render() {
     return (
@@ -121,8 +141,8 @@ class Roll extends Component {
                 Pack size:
               </div>
               {/* pack size options */}
-              <div className="button-space">
-                <button className="button grey" type="button" onClick={this.changePackSize} value={1}>1</button>
+              <div className="button-space" id="button-click">
+                <button className="button" type="button" onClick={this.changePackSize} value={1}>1</button>
                 <button className="button" type="button" onClick={this.changePackSize} value={3}>3</button>
                 <button className="button" type="button" onClick={this.changePackSize} value={6}>6</button>
                 <button className="button" type="button" onClick={this.changePackSize} value={12}>12</button>
@@ -130,8 +150,8 @@ class Roll extends Component {
             </div>
           </div>
           <div className="item-content large-divide">
-            <div className="item-label big-font fixed-width bold">{"$"+this.props.rollPrice}</div>
-            <button className="button-long expand big-font bold" type="button">Add to Cart</button>
+            <div className="item-label big-font fixed-width bold">{"$"+ this.getDisplayPrice().toFixed(2)}</div>
+            <button className="button-long expand big-font bold" type="button" onClick={() => this.props.addCart(this.createFinalRoll())}>Add to Cart</button>
           </div>
       </div>
     );

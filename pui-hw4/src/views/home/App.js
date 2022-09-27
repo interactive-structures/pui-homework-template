@@ -68,28 +68,60 @@ class App extends Component {
           rollName: "Strawberry cinnamon roll",
           rollType: "strawberry",
           rollPrice: 3.99,
-          // glazingName: "Keep original",
-          // packMultiplier: 1,
-          // packSize: 1,
-          // displayPrice: 3.99,
+          glazingName: "Keep original",
+          packMultiplier: 1,
+          packSize: 1,
+          displayPrice: 3.99,
           elementID: "strawberry_roll"
         },
       ],
-    
-      
-
-
-      // selectedGlaze: "",
-      // selectedPackSize: "",
-      // displayPrice: ""
     }
+    let cartTotal = 0;
+    let cartItems = [];
+
+    this.cartTotal = cartTotal;
+    this.cartItems = cartItems;
   }
+
+  showPopup = (roll) => {
+    document.getElementById('PopupText').style.display = 'block';
+    document.getElementById('roll-name').textContent = roll.rollName;
+    document.getElementById('roll-glazing').textContent = roll.glazingName + " glazing";
+    document.getElementById('roll-size').textContent = "Pack of " + roll.packSize;
+    document.getElementById('roll-price').textContent = "Price: $" + roll.displayPrice.toFixed(2);
+    setTimeout(() => document.getElementById('PopupText').style.display = 'none', 3000);
+  }
+
+  addCartButton = (roll) => {
+    // console.log("roll name: " + roll.rollName);
+    // console.log("glazing name: " + roll.glazingName);
+    // console.log("pack index: " + roll.packSize);
+    // console.log("display price: " + roll.displayPrice);
+    this.showPopup(roll);
+    this.cartItems.push(roll);
+    console.log(roll);
+    this.cartTotal += roll.displayPrice;
+    console.log(this.cartTotal);
+    console.log(this.cartItems.length);
+    // let item = document.querySelector("#item-count");
+    if (this.cartItems.length === 1){
+      document.querySelector("#item-count").textContent = (this.cartItems.length + " item");
+    }
+    else{
+      document.querySelector("#item-count").textContent = (this.cartItems.length + " items");
+    }
+    document.getElementById('total-cost').textContent = "Total: $" + this.cartTotal.toFixed(2);
+  };
+
+  
 
   render() {
     return (
       <div className="App">
         <NavBar 
-          logo="/assets/logo-01.svg" />
+          logo="/assets/logo-01.svg" 
+          cartItems={this.cartItems.length}
+          cartTotal= {this.cartTotal} />
   
         <div className="row">
           {/* 3 cinnamon rolls displayed per row, pass in corresponding image, name, price */}
@@ -102,7 +134,8 @@ class App extends Component {
              packMultiplier={this.state.rollData[0].packMultiplier}
              packSize={this.state.rollData[0].packSize}
              displayPrice={this.state.rollData[0].displayPrice}
-             elementID={this.state.rollData[0].elementID} />
+             elementID={this.state.rollData[0].elementID} 
+             addCart={this.addCartButton} />
           <Roll 
             imageURL={this.state.rollData[1].imageURL}
             rollName={this.state.rollData[1].rollName}
@@ -112,7 +145,8 @@ class App extends Component {
             packMultiplier={this.state.rollData[1].packMultiplier}
             packSize={this.state.rollData[1].packSize}
             displayPrice={this.state.rollData[1].displayPrice}
-            elementID={this.state.rollData[1].elementID} />
+            elementID={this.state.rollData[1].elementID} 
+            addCart={this.addCartButton} />
           <Roll 
             imageURL={this.state.rollData[2].imageURL}
             rollName={this.state.rollData[2].rollName}
@@ -122,7 +156,8 @@ class App extends Component {
             packMultiplier={this.state.rollData[2].packMultiplier}
             packSize={this.state.rollData[2].packSize}
             displayPrice={this.state.rollData[2].displayPrice}
-            elementID={this.state.rollData[2].elementID} />
+            elementID={this.state.rollData[2].elementID} 
+            addCart={this.addCartButton} />
         </div>
   
         <div className="row">
@@ -136,7 +171,8 @@ class App extends Component {
             packMultiplier={this.state.rollData[3].packMultiplier}
             packSize={this.state.rollData[3].packSize}
             displayPrice={this.state.rollData[3].displayPrice}
-            elementID={this.state.rollData[3].elementID} />
+            elementID={this.state.rollData[3].elementID} 
+            addCart={this.addCartButton} />
           <Roll 
             imageURL={this.state.rollData[4].imageURL}
             rollName={this.state.rollData[4].rollName}
@@ -146,7 +182,8 @@ class App extends Component {
             packMultiplier={this.state.rollData[4].packMultiplier}
             packSize={this.state.rollData[4].packSize}
             displayPrice={this.state.rollData[4].displayPrice}
-            elementID={this.state.rollData[4].elementID} />
+            elementID={this.state.rollData[4].elementID} 
+            addCart={this.addCartButton} />
           <Roll 
             imageURL={this.state.rollData[5].imageURL}
             rollName={this.state.rollData[5].rollName}
@@ -156,7 +193,8 @@ class App extends Component {
             packMultiplier={this.state.rollData[5].packMultiplier}
             packSize={this.state.rollData[5].packSize}
             displayPrice={this.state.rollData[5].displayPrice}
-            elementID={this.state.rollData[5].elementID} />
+            elementID={this.state.rollData[5].elementID} 
+            addCart={this.addCartButton} />
         </div>
       </div>
     );
@@ -164,32 +202,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-
-
-// glazingDict: [
-      //   {
-      //     "Keep original": 0,
-      //     "Sugar milk": 0,
-      //     "Vanilla milk": 0.50,
-      //     "Double chocolate": 1.50
-      //   }
-      // packDict: [
-      //   {
-      //     1: 1,
-      //     3: 3,
-      //     6: 5,
-      //     12: 10
-      //   }
-      // ]
-      // rollDict: [
-      //   {
-      //     "original": originalRoll,
-      //     "apple": appleRoll,
-      //     "raisin": raisinRoll,
-      //     "choc": chocolateRoll,
-      //     "strawberry": strawberryRoll,
-      //     "walnut": walnutRoll
-      //   }
-      // ]

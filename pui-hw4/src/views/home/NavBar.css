@@ -1,6 +1,7 @@
 .cart {
     width: 90px;
     flex: 0 1 auto;
+    text-align: right;
 }
 
 .description {
@@ -43,8 +44,25 @@
     margin: 0 30px;
 }
 
+.popup {
+    width: 175px;
+    text-align: left;
+    outline: solid darkgrey;
+    background-color: white;
+    padding: 4px;
+
+    position: absolute;
+    right: 140px;
+    z-index: 2;
+    display: none;
+}
+
 .products {
     flex: 1 0 auto;
     text-align: right;
     margin: 0 100px 0 0;
+}
+
+.small-font {
+    font-size: 14px;
 }
