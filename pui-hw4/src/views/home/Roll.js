@@ -84,10 +84,11 @@ class Roll extends Component {
   }
 
   changePackSize(e) {
-  console.log("CHILD: " + e.target.children);
-  for (var button of document.querySelector("#button-click").children){
-      button.style.backgroundColor="white";
-  }
+    let parent = document.querySelector("#button-click");
+    //change background color of all the buttons in the group of 4 to be white
+    for (let button of parent.querySelectorAll("button")){
+        button.style.backgroundColor = "white";
+    }
   //   for (let button of document.querySelector("#button-click").querySelectorAll("button")){
   //     button.style.backgroundColor = "white";
   // }

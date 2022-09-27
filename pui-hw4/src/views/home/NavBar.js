@@ -23,7 +23,7 @@ class NavBar extends Component {
                   <div class="small-font" id="roll-size"> Pack of 6 </div>
                   <div class="small-font" id="roll-price"> Price: $22.45 </div>
                 </div>
-                
+                {/* displays cart item count and cart total--updates dynamically */}
                 <div class="small-font right-align" id="item-count"> 0 items </div>
                 <div class="small-font right-align" id="total-cost"> Total: $0 </div>
               </div>

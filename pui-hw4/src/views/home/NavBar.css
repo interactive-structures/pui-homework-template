@@ -44,6 +44,7 @@
     margin: 0 30px;
 }
 
+/* formatting for the popup that displays when user clicks 'Add to Cart' button */
 .popup {
     width: 175px;
     text-align: left;
