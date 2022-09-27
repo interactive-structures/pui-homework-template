@@ -66,7 +66,7 @@ class Roll extends Component {
   }
 
   // setter functions for price, glazing, and pack size
-  //delay functions allow attributes to be modified so we display and console.log the 'updated' field values
+  // delay functions allow attributes to be modified so we display and console.log the 'updated' field values
   changePriceDelay(e){
     console.log("final price: " + this.state.displayPrice);
   }
@@ -101,7 +101,7 @@ class Roll extends Component {
     }), () => this.changePackSizeDelay(e))
   }
 
-  //returns the roll with updated pack size, glazing, and display price to App.js
+  // returns the roll with updated pack size, glazing, and display price to App.js
   createFinalRoll(){
     return{
         rollName: this.props.rollName,
