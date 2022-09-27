@@ -43,7 +43,7 @@ class App extends Component {
         },
         {
           imageURL: "/pui-assignments/pui-hw4/assets/double-chocolate-cinnamon-roll.jpg",
-          rollName: "Chocolate cinnamon roll",
+          rollName: "Double-chocolate cinnamon roll",
           rollPrice: 3.99,
           glazingName: "Keep original",
           displayPrice: 3.99,
