@@ -10,7 +10,7 @@ class App extends Component {
       // roll array with six objects--one of each type of cinnamon roll
       rollData: [
         {
-          imageURL: "/assets/original-cinnamon-roll.jpg",
+          imageURL: "/pui-assignments/pui-hw4/assets/original-cinnamon-roll.jpg",
           rollName: "Original cinnamon roll",
           rollPrice: 2.49,
           glazingName: "Keep original",
@@ -18,7 +18,7 @@ class App extends Component {
           elementID: "original_roll"
         },
         {
-          imageURL: "/assets/apple-cinnamon-roll.jpg",
+          imageURL: "/pui-assignments/pui-hw4/assets/apple-cinnamon-roll.jpg",
           rollName: "Apple cinnamon roll",
           rollPrice: 3.49,
           glazingName: "Keep original",
@@ -26,7 +26,7 @@ class App extends Component {
           elementID: "apple_roll"
         },
         {
-          imageURL: "/assets/raisin-cinnamon-roll.jpg",
+          imageURL: "/pui-assignments/pui-hw4/assets/raisin-cinnamon-roll.jpg",
           rollName: "Raisin cinnamon roll",
           rollPrice: 2.99,
           glazingName: "Keep original",
@@ -34,7 +34,7 @@ class App extends Component {
           elementID: "raisin_roll"
         },
         {
-          imageURL: "/assets/walnut-cinnamon-roll.jpg",
+          imageURL: "/pui-assignments/pui-hw4/assets/walnut-cinnamon-roll.jpg",
           rollName: "Walnut cinnamon roll",
           rollPrice: 3.49,
           glazingName: "Keep original",
@@ -42,7 +42,7 @@ class App extends Component {
           elementID: "walnut_roll"
         },
         {
-          imageURL: "/assets/double-chocolate-cinnamon-roll.jpg",
+          imageURL: "/pui-assignments/pui-hw4/assets/double-chocolate-cinnamon-roll.jpg",
           rollName: "Chocolate cinnamon roll",
           rollPrice: 3.99,
           glazingName: "Keep original",
@@ -50,7 +50,7 @@ class App extends Component {
           elementID: "choc_roll"
         },
         {
-          imageURL: "/assets/strawberry-cinnamon-roll.jpg",
+          imageURL: "/pui-assignments/pui-hw4/assets/strawberry-cinnamon-roll.jpg",
           rollName: "Strawberry cinnamon roll",
           rollPrice: 3.99,
           glazingName: "Keep original",
@@ -96,7 +96,7 @@ class App extends Component {
       <div className="App">
         {/* header bar for the Bun Bun Shop webpage */}
         <NavBar 
-          logo="/assets/logo-01.svg" 
+          logo="/pui-assignments/pui-hw4/assets/logo-01.svg" 
           cartItems={this.cartItems.length}
           cartTotal= {this.cartTotal} />
   
