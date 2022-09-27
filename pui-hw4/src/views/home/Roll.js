@@ -4,7 +4,8 @@ import './Roll.css';
 class Roll extends Component {
   constructor(props) {
     super(props);
-    // standard selected glazing option and pack size selected
+
+    // selected standard glazing option and pack size selected for each Roll
     this.state = {
       glazingIndex: 0,
       glazingName: "Keep original",
@@ -65,6 +66,7 @@ class Roll extends Component {
   }
 
   // setter functions for price, glazing, and pack size
+  //delay functions allow attributes to be modified so we display and console.log the 'updated' field values
   changePriceDelay(e){
     console.log("final price: " + this.state.displayPrice);
   }
@@ -93,15 +95,6 @@ class Roll extends Component {
   }
 
   changePackSize(e) {
-    let parent = document.querySelector("#button-color");
-    //change background color of all the buttons in the group of 4 to be white
-    for (let button of parent.querySelectorAll("button")){
-        button.style.backgroundColor = "white";
-        console.log("white");
-    }
-  //change background color of selected button to be grey
-  
-  e.target.style.backgroundColor='lightgrey';
     this.setState(prevState => ({
       ...prevState,
       packIndex: e.target.value, 
@@ -130,7 +123,7 @@ class Roll extends Component {
               <div className="small-font fixed-width">
                 Glazing:
               </div>
-              {/* select box glazing options */}
+              {/* select box glazing options, updates glazing attribute and price */}
               <select  className="custom-select expand" onChange={this.changeGlazing} value={this.state.glazingIndex}>
                 <option value="0">Keep original</option>
                 <option value="1">Sugar milk</option>
@@ -142,7 +135,7 @@ class Roll extends Component {
               <div className="small-font fixed-width">
                 Pack size:
               </div>
-              {/* pack size options */}
+              {/* pack size options, updates pack size attribute and price */}
               <div className="button-space" id="button-color">
                 <button className="button" type="button" onClick={this.changePackSize} value={1}>1</button>
                 <button className="button" type="button" onClick={this.changePackSize} value={3}>3</button>
@@ -152,7 +145,9 @@ class Roll extends Component {
             </div>
           </div>
           <div className="item-content large-divide">
+            {/* updates roll price based on selected glaze and pack size */}
             <div className="item-label big-font fixed-width bold">{"$"+ this.getDisplayPrice().toFixed(2)}</div>
+            {/* passes updated roll object back to App.js */}
             <button className="button-long expand big-font bold" type="button" onClick={() => this.props.addCart(this.createFinalRoll())}>Add to Cart</button>
           </div>
       </div>

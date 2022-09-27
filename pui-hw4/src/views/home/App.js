@@ -67,7 +67,7 @@ class App extends Component {
     this.cartItems = cartItems;
   }
 
-  // function below displays the popup for 3 seconds when the user clicks "Add to Cart" button
+  // function below displays the populated popup for 3 seconds when the user clicks "Add to Cart" button
   showPopup = (roll) => {
     document.getElementById('PopupText').style.display = 'block';
     document.getElementById('roll-name').textContent = roll.rollName;
