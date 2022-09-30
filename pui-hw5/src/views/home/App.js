@@ -62,9 +62,13 @@ class App extends Component {
     
     let cartTotal = 0;
     let cartItems = [];
+    let filterRoll = null;
+    let showNone = false;
 
     this.cartTotal = cartTotal;
     this.cartItems = cartItems;
+    this.filterRoll = filterRoll;
+    this.showNone = showNone;
   }
 
   // function below displays the populated popup for 3 seconds when the user clicks "Add to Cart" button
@@ -91,6 +95,14 @@ class App extends Component {
     document.getElementById('total-cost').textContent = "Total: $" + this.cartTotal.toFixed(2);
   };
 
+  filterRollButton = (query) => {
+    console.log("text input: " + query);
+    this.setState(prevState => ({
+      ...prevState,
+      filterRoll: query
+    }))
+  }
+
   render() {
     return (
       <div className="App">
@@ -98,29 +110,37 @@ class App extends Component {
         <NavBar 
           logo="/pui-assignments/pui-hw5/assets/logo-01.svg" 
           cartItems={this.cartItems.length}
-          cartTotal= {this.cartTotal} />
+          cartTotal= {this.cartTotal}
+          filterRolls = {this.filterRollButton} />
   
         {/* 3 cinnamon rolls displayed per row, pass in corresponding image, name, price */}
         <div className="row">
         {this.state.rollData.map((roll, idx) => {
-            if (idx < 3){
-              return <Roll 
-                key={idx}
-                elementID={idx}
-                imageURL={roll.imageURL}
-                rollName={roll.rollName}
-                rollPrice={roll.rollPrice}
-                glazingName={roll.glazingName}
-                displayPrice={roll.displayPrice}
-                addCart={this.addCartButton} />;
-            }
+          console.log("a: " + this.state.filterRoll);
+          console.log("b: " + roll.rollName);
+          if (idx < 3 && (this.state.filterRoll == null || roll.rollName.toLowerCase().includes(this.state.filterRoll.toLowerCase()))) {
+            this.state.showNone = true;
+            return <Roll 
+              key={idx}
+              elementID={idx}
+              imageURL={roll.imageURL}
+              rollName={roll.rollName}
+              rollPrice={roll.rollPrice}
+              glazingName={roll.glazingName}
+              displayPrice={roll.displayPrice}
+              addCart={this.addCartButton} />;
+          }
         })} 
         </div>
   
         {/* 3 cinnamon rolls displayed per row, pass in corresponding image, name, price */}
         <div className="row">
           {this.state.rollData.map((roll, idx) => {
-            if (idx > 2){
+            if (idx <= 2 && roll.rollName.includes(this.state.filterRoll)){
+              this.state.showNone = true;
+            }
+            if (idx > 2 && (this.state.filterRoll == null || roll.rollName.includes(this.state.filterRoll))) {
+              this.state.showNone = true;
               return <Roll 
                 key={idx}
                 elementID={idx}
@@ -131,8 +151,14 @@ class App extends Component {
                 displayPrice={roll.displayPrice}
                 addCart={this.addCartButton} />;
             }
+            if (this.state.showNone == false && idx == 6){
+              console.log("BINGBONG");
+            }
           })} 
+          
+          
         </div>
+        
       </div>
     );
   }

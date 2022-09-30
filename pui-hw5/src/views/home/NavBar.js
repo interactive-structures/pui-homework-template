@@ -2,6 +2,28 @@ import React, { Component } from 'react';
 import './NavBar.css';
 
 class NavBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchBar: ""
+    }
+    this.searchBarChanged = this.searchBarChanged.bind(this);
+    this.searchButtonClicked=this.searchButtonClicked.bind(this);
+  }
+
+
+  searchButtonClicked(){
+    console.log(this.state.searchBar);
+    return this.state.searchBar;
+  }
+
+  searchBarChanged(e){
+    this.setState(prevState => ({
+      ...prevState,
+      searchBar: e.target.value
+    }))
+  }
+
     render() {
       return (
         <div className="header-bar">
@@ -13,19 +35,19 @@ class NavBar extends Component {
               <div className="products">
                 <span className="highlight">PRODUCTS</span>
               </div>
-              <div class="cart">
+              <div className="cart">
                 <div class = "cart-text"> CART </div>
                 {/* shows the popup message when "add to cart" button is clicked */}
                 <div class ="popup" id="PopupText">
-                  <div class="small-font"> Added to cart: </div><br/>
-                  <div class="small-font bold" id="roll-name"> Raisin cinnamon roll </div>
-                  <div class="small-font" id="roll-glazing"> Double chocolate glazing </div>
-                  <div class="small-font" id="roll-size"> Pack of 6 </div>
-                  <div class="small-font" id="roll-price"> Price: $22.45 </div>
+                  <div className="small-font"> Added to cart: </div><br/>
+                  <div className="small-font bold" id="roll-name"> Raisin cinnamon roll </div>
+                  <div className="small-font" id="roll-glazing"> Double chocolate glazing </div>
+                  <div className="small-font" id="roll-size"> Pack of 6 </div>
+                  <div className="small-font" id="roll-price"> Price: $22.45 </div>
                 </div>
                 {/* displays cart item count and cart total--updates dynamically as items are added to cart */}
-                <div class="small-font right-align" id="item-count"> 0 items </div>
-                <div class="small-font right-align" id="total-cost"> Total: $0 </div>
+                <div className="small-font right-align" id="item-count"> 0 items </div>
+                <div className="small-font right-align" id="total-cost"> Total: $0 </div>
               </div>
 
             </div>
@@ -33,10 +55,25 @@ class NavBar extends Component {
                 <div className="description">
                   Our hand-made cinnamon rolls
                 </div>
+                <div className="subheading">
+                  <div className="search">
+                    <input type="search" id="query" onChange={this.searchBarChanged} value={this.state.searchBar} placeholder="Search..."></input>
+                    <button  onClick={() => this.props.filterRolls(this.searchButtonClicked())}>Search</button>
+                  </div>
+
+                  <div className="small-font">
+                    sort by: 
+                    <select value={this.state.glazingIndex}>
+                      <option value="0">Base Price</option>
+                      <option value="1">Name</option>
+                    </select>
+                  </div>
+                </div>
             </div>
         </div>
       );
     }
   }
+  //onClick={this.searchButtonClicked}
   
   export default NavBar
