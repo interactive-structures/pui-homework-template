@@ -13,19 +13,19 @@ class NavBar extends Component {
               <div className="products">
                 <span className="highlight">PRODUCTS</span>
               </div>
-              <div class="cart">
+              <div className="cart">
                 <div class = "cart-text"> CART </div>
                 {/* shows the popup message when "add to cart" button is clicked */}
                 <div class ="popup" id="PopupText">
-                  <div class="small-font"> Added to cart: </div><br/>
-                  <div class="small-font bold" id="roll-name"> Raisin cinnamon roll </div>
-                  <div class="small-font" id="roll-glazing"> Double chocolate glazing </div>
-                  <div class="small-font" id="roll-size"> Pack of 6 </div>
-                  <div class="small-font" id="roll-price"> Price: $22.45 </div>
+                  <div className="small-font"> Added to cart: </div><br/>
+                  <div className="small-font bold" id="roll-name"> Raisin cinnamon roll </div>
+                  <div className="small-font" id="roll-glazing"> Double chocolate glazing </div>
+                  <div className="small-font" id="roll-size"> Pack of 6 </div>
+                  <div className="small-font" id="roll-price"> Price: $22.45 </div>
                 </div>
                 {/* displays cart item count and cart total--updates dynamically as items are added to cart */}
-                <div class="small-font right-align" id="item-count"> 0 items </div>
-                <div class="small-font right-align" id="total-cost"> Total: $0 </div>
+                <div className="small-font right-align" id="item-count"> 0 items </div>
+                <div className="small-font right-align" id="total-cost"> Total: $0 </div>
               </div>
 
             </div>
