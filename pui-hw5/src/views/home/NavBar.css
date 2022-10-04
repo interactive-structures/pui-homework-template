@@ -64,14 +64,20 @@
     margin: 0 100px 0 0;
 }
 
-.search {
-    margin: 0 50px 0 0;
-}
-
 .small-font {
     font-size: 14px;
 }
 
-.subheading {
-    display: inline-block;
+.total {
+    
+}
+.total-price{
+    flex: 1 0 auto;
+    text-align: right;
+
+}
+
+.total-items{
+    flex: 0 1 auto;
+
 }

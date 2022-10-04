@@ -1,0 +1,18 @@
+
+.header-bar {
+    align-items: center; 
+    display: flex;
+    margin: auto;
+}
+
+.search {
+    margin: 0 35px 0 108px;
+}
+
+.small-font {
+    font-size: 14px;
+}
+
+.sort-by{
+    margin: 0 2px 0 0;
+}

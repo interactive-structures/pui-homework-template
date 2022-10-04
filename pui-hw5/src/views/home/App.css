@@ -13,8 +13,15 @@ body {
   padding: 0 20px;
 }
 
+.App {
+  width: 1300px;
+  align-items: center;
+}
 /* display for a row of items (cinnamon rolls) */
 .row {
+  width: 850px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center; 
+  margin: 0 200px 0 225px;
 }

@@ -10,7 +10,7 @@ class Roll extends Component {
       glazingIndex: 0,
       glazingName: "Keep original",
       packIndex: 1,
-      displayPrice: null,
+      displayPrice: 0,
       isGrey: false
     }
 
@@ -60,10 +60,11 @@ class Roll extends Component {
   }
 
   getDisplayPrice() {
-    if (this.state.displayPrice != null) {
-      return this.state.displayPrice;
-    }
     return this.props.displayPrice;
+  }
+
+  componentDidMount() {
+    this.setState({ displayPrice: this.props.displayPrice })
   }
 
   // setter functions for price, glazing, and pack size
@@ -73,10 +74,12 @@ class Roll extends Component {
   }
 
   changePrice(e) {
+    console.log("pack:" + this.state.packIndex);
+    console.log("glaze: " + this.glazeIndexDict[this.state.glazingIndex]);
     this.setState(prevState => ({
       ...prevState,
       displayPrice: (this.props.rollPrice + this.getGlazingPrice(this.state.glazingIndex)) * this.getPackMultiplier(this.state.packIndex), 
-    }), () => this.changePriceDelay(e)) 
+    }), () => this.props.changeOverallPrice(this.state.displayPrice, this.state.packIndex, this.glazeIndexDict[this.state.glazingIndex])) 
   }
 
   changeGlazingDelay(e) {
@@ -106,6 +109,7 @@ class Roll extends Component {
   // returns the roll with updated pack size, glazing, and display price to App.js
   createFinalRoll(){
     return{
+        imageURL: this.props.imageURL,
         rollName: this.props.rollName,
         glazingName: this.state.glazingName,
         packSize: this.state.packIndex,
@@ -132,7 +136,7 @@ class Roll extends Component {
                 Glazing:
               </div>
               {/* select box glazing options, updates glazing attribute and price */}
-              <select  className="custom-select expand" onChange={this.changeGlazing} value={this.state.glazingIndex}>
+              <select className="custom-select expand" onChange={this.changeGlazing} value={this.state.glazingIndex}>
                 <option value="0">Keep original</option>
                 <option value="1">Sugar milk</option>
                 <option value="2">Vanilla milk</option>

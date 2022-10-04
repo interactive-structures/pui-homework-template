@@ -2,28 +2,6 @@ import React, { Component } from 'react';
 import './NavBar.css';
 
 class NavBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchBar: ""
-    }
-    this.searchBarChanged = this.searchBarChanged.bind(this);
-    this.searchButtonClicked=this.searchButtonClicked.bind(this);
-  }
-
-
-  searchButtonClicked(){
-    console.log(this.state.searchBar);
-    return this.state.searchBar;
-  }
-
-  searchBarChanged(e){
-    this.setState(prevState => ({
-      ...prevState,
-      searchBar: e.target.value
-    }))
-  }
-
     render() {
       return (
         <div className="header-bar">
@@ -36,7 +14,7 @@ class NavBar extends Component {
                 <span className="highlight">PRODUCTS</span>
               </div>
               <div className="cart">
-                <div class = "cart-text"> CART </div>
+                <div class = "cart-text" onClick={() => this.props.displayCart()}> CART </div>
                 {/* shows the popup message when "add to cart" button is clicked */}
                 <div class ="popup" id="PopupText">
                   <div className="small-font"> Added to cart: </div><br/>
@@ -49,24 +27,18 @@ class NavBar extends Component {
                 <div className="small-font right-align" id="item-count"> 0 items </div>
                 <div className="small-font right-align" id="total-cost"> Total: $0 </div>
               </div>
-
             </div>
+
             <hr className="line-weight" />
                 <div className="description">
                   Our hand-made cinnamon rolls
                 </div>
-                <div className="subheading">
-                  <div className="search">
-                    <input type="search" id="query" onChange={this.searchBarChanged} value={this.state.searchBar} placeholder="Search..."></input>
-                    <button  onClick={() => this.props.filterRolls(this.searchButtonClicked())}>Search</button>
+                <div className="header-bar-text">
+                  <div className="total-items"> 
+                      Shopping Cart ({this.props.totalItems} items)
                   </div>
-
-                  <div className="small-font">
-                    sort by: 
-                    <select value={this.state.glazingIndex}>
-                      <option value="0">Base Price</option>
-                      <option value="1">Name</option>
-                    </select>
+                  <div className="total-price">
+                      Total: ${this.props.totalPrice}
                   </div>
                 </div>
             </div>

@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 import Roll from './Roll';
 import NavBar from './NavBar';
+import SearchBar from './Search';
+import Cart from './Cart';
+
+let displayRollCount = 0;
+let displayCart = false;
+let cartClicked = false;
 
 class App extends Component {
   constructor(props) {
@@ -58,17 +64,31 @@ class App extends Component {
           elementID: "strawberry_roll"
         },
       ],
+      cartItems: [],
+      packSize: 1,
+      glazingOption: "Keep original",
+      showCart: false,
+      totalItems: 0,
+      totalPrice: 0
+    }
+
+    let sortName = { //corresponding glaze names with prices
+      0: "rollPrice",
+      1: "rollName"
     }
     
     let cartTotal = 0;
-    let cartItems = [];
     let filterRoll = null;
-    let showNone = false;
 
     this.cartTotal = cartTotal;
-    this.cartItems = cartItems;
     this.filterRoll = filterRoll;
-    this.showNone = showNone;
+    this.sortName = sortName;
+    this.sortRollButton = this.sortRollButton.bind(this);
+    this.changeOverallPrice = this.changeOverallPrice.bind(this);
+  }
+
+  componentDidMount() {
+    this.sortRollButton(0);
   }
 
   // function below displays the populated popup for 3 seconds when the user clicks "Add to Cart" button
@@ -83,24 +103,114 @@ class App extends Component {
 
   // function below displays the cart item and price totals after items are added
   addCartButton = (roll) => {
+    cartClicked = true;
     this.showPopup(roll);
-    this.cartItems.push(roll);
-    this.cartTotal += roll.displayPrice;
-    if (this.cartItems.length === 1){
-      document.querySelector("#item-count").textContent = (this.cartItems.length + " item");
+    this.state.cartItems.push(roll);
+
+    let cartItemTemp = [...this.state.cartItems];
+    console.log("LIST: " + cartItemTemp.imageURL);
+
+    this.setState(prevState => ({
+      ...prevState,
+      cartItems: cartItemTemp,
+      totalItems: cartItemTemp.length
+    }))
+
+    if(this.state.cartItems.length > 0){
+      displayCart = true;
     }
     else{
-      document.querySelector("#item-count").textContent = (this.cartItems.length + " items");
+      displayCart = false;
+    }
+
+    this.cartTotal += roll.displayPrice;
+
+    if (this.state.cartItems.length === 1){
+      document.querySelector("#item-count").textContent = (this.state.cartItems.length + " item");
+    }
+    else{
+      document.querySelector("#item-count").textContent = (this.state.cartItems.length + " items");
     }
     document.getElementById('total-cost').textContent = "Total: $" + this.cartTotal.toFixed(2);
+    
+    this.setState(prevState => ({
+      ...prevState,
+      totalPrice: this.cartTotal.toFixed(2)
+    }))
   };
+
+  displayCartButton = () => {
+    console.log("you pressed the CART button");
+    this.setState(prevState => ({
+      ...prevState,
+      showCart: true
+    }))
+    console.log("showCart: "+ this.state.showCart);
+  };
+
+  delayDisplay (){
+    console.log("hideRolls:" + this.displayRollCount);
+  }
+
+  changeTextDisplay = () => {
+    displayRollCount = 1;
+    console.log(displayRollCount);
+  }
 
   filterRollButton = (query) => {
     console.log("text input: " + query);
+    displayRollCount = 0;
+    
     this.setState(prevState => ({
       ...prevState,
       filterRoll: query
     }))
+  }
+
+  sortRollButton = (order) => {
+    console.log("text input: " + order);
+
+    const sortProperty = this.sortName[order];
+    console.log("sorting by: " + sortProperty);
+
+    const sorted =
+      [...this.state.rollData].sort((a, b) => {
+          const nameA = a[sortProperty]; 
+          const nameB = b[sortProperty];
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          // names must be equal
+          return 0;
+        });
+      
+
+    this.setState(prevState => ({
+      ...prevState,
+      rollData: sorted
+    }))
+    console.log("sorted list: " + this.state.rollData);
+  }
+  
+  changeOverallPrice(idx, price, pack, glaze){
+    const rollDataTemp = [...this.state.rollData];
+    rollDataTemp[idx].displayPrice = price;
+    rollDataTemp[idx].packSize = pack;
+    rollDataTemp[idx].glazingOption = glaze;
+
+    console.log(idx);
+    console.log("1: " + pack);
+    console.log("2: " + glaze);
+    console.log("p: " + rollDataTemp[idx].displayPrice);
+    console.log("s: " + rollDataTemp[idx].packSize);
+    console.log("g: " + rollDataTemp[idx].glazingOption);
+    this.setState({ 
+      rollData: rollDataTemp 
+    });
+    // this.state.displayPrice = this.props.rollPrice + this.getGlazingPrice(this.state.glazingIndex)) * this.getPackMultiplier(this.state.packIndex)
   }
 
   render() {
@@ -109,17 +219,45 @@ class App extends Component {
         {/* header bar for the Bun Bun Shop webpage */}
         <NavBar 
           logo="/pui-assignments/pui-hw5/assets/logo-01.svg" 
-          cartItems={this.cartItems.length}
-          cartTotal= {this.cartTotal}
-          filterRolls = {this.filterRollButton} />
+          cartItems={this.state.cartItems.length}
+          cartTotal= {this.cartTotal} 
+          displayCart = {this.displayCartButton} 
+          totalItems={this.state.totalItems}
+          totalPrice={this.state.totalPrice} />
+      
+          {/* {!displayCart && cartClicked && <p>The cart is empty! </p>} */}
+          <div className="row">
+            
+            {this.state.cartItems.map((roll, idx) => {
+              if (this.state.totalItems > 0){
+                return <Cart 
+                  key={idx}
+                  imageURL={roll.imageURL}
+                  rollName={roll.rollName}
+                  glazingName={roll.glazingName}
+                  packSize={roll.packSize}
+                  displayPrice={roll.displayPrice}
+                  totalItems={this.state.totalItems}
+                  totalPrice={this.state.totalPrice} />
+              }
+              else{
+                <div>the cart </div>
+              }
+            })}
+
+          </div>  
+
+        <SearchBar
+          filterRolls = {this.filterRollButton}
+          sortRolls={this.sortRollButton} /> 
+        
   
         {/* 3 cinnamon rolls displayed per row, pass in corresponding image, name, price */}
         <div className="row">
         {this.state.rollData.map((roll, idx) => {
-          console.log("a: " + this.state.filterRoll);
-          console.log("b: " + roll.rollName);
-          if (idx < 3 && (this.state.filterRoll == null || roll.rollName.toLowerCase().includes(this.state.filterRoll.toLowerCase()))) {
-            this.state.showNone = true;
+          if ((this.state.filterRoll == null || roll.rollName.toLowerCase().includes(this.state.filterRoll.toLowerCase()))) {
+            this.changeTextDisplay();
+            
             return <Roll 
               key={idx}
               elementID={idx}
@@ -128,37 +266,12 @@ class App extends Component {
               rollPrice={roll.rollPrice}
               glazingName={roll.glazingName}
               displayPrice={roll.displayPrice}
-              addCart={this.addCartButton} />;
+              addCart={this.addCartButton} 
+              changeOverallPrice={(num) => this.changeOverallPrice(idx, num)} />;
           }
-        })} 
+        })}
+        {displayRollCount == 0 && <p>No match!</p>}
         </div>
-  
-        {/* 3 cinnamon rolls displayed per row, pass in corresponding image, name, price */}
-        <div className="row">
-          {this.state.rollData.map((roll, idx) => {
-            if (idx <= 2 && roll.rollName.includes(this.state.filterRoll)){
-              this.state.showNone = true;
-            }
-            if (idx > 2 && (this.state.filterRoll == null || roll.rollName.includes(this.state.filterRoll))) {
-              this.state.showNone = true;
-              return <Roll 
-                key={idx}
-                elementID={idx}
-                imageURL={roll.imageURL}
-                rollName={roll.rollName}
-                rollPrice={roll.rollPrice}
-                glazingName={roll.glazingName}
-                displayPrice={roll.displayPrice}
-                addCart={this.addCartButton} />;
-            }
-            if (this.state.showNone == false && idx == 6){
-              console.log("BINGBONG");
-            }
-          })} 
-          
-          
-        </div>
-        
       </div>
     );
   }
