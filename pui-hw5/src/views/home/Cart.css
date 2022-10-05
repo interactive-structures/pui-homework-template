@@ -2,10 +2,19 @@
     font-weight: 600;
 }
 
+/* remove button for items in cart */
+.button-cart{
+    background-color: white;
+    border-top: black;
+    border-left: black;
+    border-right: black;
+    padding: 0px;
+}
+
 .cart-des{
     line-height: 8px;
 }
-
+/* smaller roll images for items in cart */
 .cart-image{
     width: 150px;
     height: 150px;
@@ -22,12 +31,4 @@
 
 .des{
     font-size: 14px;
-}
-
-.button-cart{
-    background-color: white;
-    border-top: black;
-    border-left: black;
-    border-right: black;
-    padding: 0px;
 }

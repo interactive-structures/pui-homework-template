@@ -1,10 +1,7 @@
-.total-price{
-    flex: 1 0 auto;
-    text-align: right;
-}
-
-.total-items{
-    flex: 0 1 auto;
+.divider {
+    border: none;
+    height: 4px;
+    background-color: #333;
 }
 
 .total-header {
@@ -17,8 +14,12 @@
     border-top: solid #7b6666 4px;
 
 }
-.divider {
-    border: none;
-    height: 4px;
-    background-color: #333;
+
+.total-items{
+    flex: 0 1 auto;
+}
+
+.total-price{
+    flex: 1 0 auto;
+    text-align: right;
 }

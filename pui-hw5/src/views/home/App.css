@@ -1,29 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
+/* display for the entire webpage */
+.App {
+  width: 1300px;
+  align-items: center;
+}
+
 /* margin for the double-chocolate roll card */
 .big-margin {
   margin: 21px 0 0 0;
 }
 
+/* Set the default font family and font color for our application. */
 body {
-  /* Set the default font family and font color for our application. */
   font-family: 'Roboto';
   font-size: 18px;
   color: black;
   padding: 0 20px;
-}
-
-.App {
-  width: 1300px;
-  align-items: center;
-}
-/* display for a row of items (cinnamon rolls) */
-.row {
-  width: 850px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; 
-  margin: 0 200px 0 225px;
 }
 
 .cart-row{
@@ -37,4 +30,13 @@ body {
   width: 890px;
   margin: 0 0 20px 250px;
   border-top: solid #7b6666 4px;
+}
+
+/* display for a row of items (cinnamon rolls) */
+.row {
+  width: 850px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  margin: 0 200px 0 225px;
 }

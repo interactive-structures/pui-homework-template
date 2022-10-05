@@ -101,7 +101,6 @@ class Roll extends Component {
   changePackSize(e) {
     this.setState(prevState => ({
       ...prevState,
-      // isGrey: !prevState.isGrey,
       packIndex: e.target.value
     }), () => this.changePackSizeDelay(e) && this.toggleColor())
   }

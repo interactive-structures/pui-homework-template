@@ -120,16 +120,19 @@ class App extends Component {
   displayDelay(){
     cartIsClicked = true;
     console.log("you pressed the CART button");
+    console.log("totalItems: " + this.state.totalItems);
+    console.log("cartIsClicked: " + cartIsClicked);
     console.log("showCart: "+ this.state.showCart);
+    console.log("cartOpen:" + cartIsOpen);
     cartIsOpen = !cartIsOpen;
-    console.log("cart open:" + cartIsOpen);
   }
 
   displayCartButton = () => {
     this.setState(prevState => ({
       ...prevState,
       showCart: true
-    }),() => this.displayDelay())
+    })) //,() => this.displayDelay()
+    this.displayDelay()
   };
 
   changeTextDisplay = () => {
@@ -166,6 +169,9 @@ class App extends Component {
       ...prevState,
       rollData: sorted
     }))
+
+    console.log("Roll Data")
+    console.log(sorted)
   }
   
   changeOverallPrice(idx, price, pack, glaze){
