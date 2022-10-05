@@ -21,6 +21,7 @@ class App extends Component {
           imageURL: "/pui-assignments/pui-hw5/assets/original-cinnamon-roll.jpg",
           rollName: "Original cinnamon roll",
           rollPrice: 2.49,
+          packSize: 1,
           glazingName: "Keep original",
           displayPrice: 2.49,
           elementID: "original_roll"
@@ -29,6 +30,7 @@ class App extends Component {
           imageURL: "/pui-assignments/pui-hw5/assets/apple-cinnamon-roll.jpg",
           rollName: "Apple cinnamon roll",
           rollPrice: 3.49,
+          packSize: 1,
           glazingName: "Keep original",
           displayPrice: 3.49,
           elementID: "apple_roll"
@@ -37,6 +39,7 @@ class App extends Component {
           imageURL: "/pui-assignments/pui-hw5/assets/raisin-cinnamon-roll.jpg",
           rollName: "Raisin cinnamon roll",
           rollPrice: 2.99,
+          packSize: 1,
           glazingName: "Keep original",
           displayPrice: 2.99,
           elementID: "raisin_roll"
@@ -45,6 +48,7 @@ class App extends Component {
           imageURL: "/pui-assignments/pui-hw5/assets/walnut-cinnamon-roll.jpg",
           rollName: "Walnut cinnamon roll",
           rollPrice: 3.49,
+          packSize: 1,
           glazingName: "Keep original",
           displayPrice: 3.49,
           elementID: "walnut_roll"
@@ -53,6 +57,7 @@ class App extends Component {
           imageURL: "/pui-assignments/pui-hw5/assets/double-chocolate-cinnamon-roll.jpg",
           rollName: "Double-chocolate cinnamon roll",
           rollPrice: 3.99,
+          packSize: 1,
           glazingName: "Keep original",
           displayPrice: 3.99,
           elementID: "choc_roll"
@@ -61,13 +66,14 @@ class App extends Component {
           imageURL: "/pui-assignments/pui-hw5/assets/strawberry-cinnamon-roll.jpg",
           rollName: "Strawberry cinnamon roll",
           rollPrice: 3.99,
+          packSize: 1,
           glazingName: "Keep original",
           displayPrice: 3.99,
           elementID: "strawberry_roll"
         },
       ],
       cartItems: [],
-      packSize: 1,
+      // packSize: 1,
       glazingOption: "Keep original",
       showCart: false,
       totalItems: 0,
@@ -156,35 +162,32 @@ class App extends Component {
           return 0;
         });
       
-
     this.setState(prevState => ({
       ...prevState,
       rollData: sorted
     }))
-    console.log("sorted list: " + this.state.rollData);
   }
   
   changeOverallPrice(idx, price, pack, glaze){
     const rollDataTemp = [...this.state.rollData];
     rollDataTemp[idx].displayPrice = price;
     rollDataTemp[idx].packSize = pack;
-    rollDataTemp[idx].glazingOption = glaze;
+    rollDataTemp[idx].glazingName = glaze;
+
 
     console.log(idx);
-    console.log("1: " + pack);
-    console.log("2: " + glaze);
     console.log("p: " + rollDataTemp[idx].displayPrice);
     console.log("s: " + rollDataTemp[idx].packSize);
     console.log("g: " + rollDataTemp[idx].glazingOption);
     this.setState({ 
       rollData: rollDataTemp 
-    });
+    }, ()=>this.removeDelay());
   }
+
   removeDelay(){
+    console.log(this.state.rollData);
     console.log("W: " + this.state.totalItems);
     console.log(this.state.totalPrice);
-    document.getElementById('total-items').textContent =  "Shopping Cart (" + this.state.totalItems + " items)";
-    document.getElementById('total-price').textContent = "Total: $" + this.state.totalPrice.toFixed(2);
   }
 
   removeRollButton(rollIndex){
@@ -264,9 +267,10 @@ class App extends Component {
               rollName={roll.rollName}
               rollPrice={roll.rollPrice}
               glazingName={roll.glazingName}
+              packIndex={roll.packIndex}
               displayPrice={roll.displayPrice}
               addCart={this.addCartButton} 
-              changeOverallPrice={(num) => this.changeOverallPrice(idx, num)} />;
+              changeOverallPrice={(num, num1, num2) => this.changeOverallPrice(idx, num, num1, num2)} />;
           }
         })}
         {displayRollCount == 0 && <p>No match!</p>}
