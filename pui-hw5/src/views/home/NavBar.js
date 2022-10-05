@@ -23,9 +23,6 @@ class NavBar extends Component {
                   <div className="small-font" id="roll-size"> Pack of 6 </div>
                   <div className="small-font" id="roll-price"> Price: $22.45 </div>
                 </div>
-                {/* displays cart item count and cart total--updates dynamically as items are added to cart */}
-                <div className="small-font right-align" id="item-count"> 0 items </div>
-                <div className="small-font right-align" id="total-cost"> Total: $0 </div>
               </div>
             </div>
 
@@ -33,14 +30,14 @@ class NavBar extends Component {
                 <div className="description">
                   Our hand-made cinnamon rolls
                 </div>
-                <div className="header-bar-text">
-                  <div className="total-items"> 
+                {/* <div className="header-bar-text">
+                  <div className="total-items" id="total-items"> 
                       Shopping Cart ({this.props.totalItems} items)
                   </div>
-                  <div className="total-price">
+                  <div className="total-price" id="total-price">
                       Total: ${this.props.totalPrice}
                   </div>
-                </div>
+                </div> */}
             </div>
         </div>
       );

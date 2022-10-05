@@ -25,3 +25,14 @@ body {
   justify-content: center; 
   margin: 0 200px 0 225px;
 }
+
+.cart-row{
+  width: 850px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 200px 0 250px;
+}
+
+.center {
+  align-items: center;
+}

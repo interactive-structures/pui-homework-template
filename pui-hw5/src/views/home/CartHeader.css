@@ -1,0 +1,18 @@
+.total-price{
+    flex: 1 0 auto;
+    text-align: right;
+
+}
+
+.total-items{
+    flex: 0 1 auto;
+}
+
+.total-header {
+    display: flex;
+    flex-direction: row;
+    width: 850px;
+  
+  flex-wrap: wrap;
+  margin: 0 200px 0 250px;
+}
