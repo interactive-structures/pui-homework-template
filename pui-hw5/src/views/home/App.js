@@ -8,6 +8,8 @@ import CartHeader from './CartHeader';
 
 let displayRollCount = 0;
 let displayCart = false;
+let cartIsClicked = false;
+let cartIsOpen = false;
 
 class App extends Component {
   constructor(props) {
@@ -110,8 +112,11 @@ class App extends Component {
   };
 
   displayDelay(){
+    cartIsClicked = true;
     console.log("you pressed the CART button");
     console.log("showCart: "+ this.state.showCart);
+    cartIsOpen = !cartIsOpen;
+    console.log("cart open:" + cartIsOpen);
   }
 
   displayCartButton = () => {
@@ -119,16 +124,13 @@ class App extends Component {
       ...prevState,
       showCart: true
     }),() => this.displayDelay())
-    
   };
 
   changeTextDisplay = () => {
     displayRollCount = 1;
-    console.log(displayRollCount);
   }
 
   filterRollButton = (query) => {
-    console.log("text input: " + query);
     displayRollCount = 0;
     
     this.setState(prevState => ({
@@ -138,10 +140,7 @@ class App extends Component {
   }
 
   sortRollButton = (order) => {
-    console.log("text input: " + order);
-
     const sortProperty = this.sortName[order];
-    console.log("sorting by: " + sortProperty);
 
     const sorted =
       [...this.state.rollData].sort((a, b) => {
@@ -223,17 +222,15 @@ class App extends Component {
           displayCart = {this.displayCartButton} 
           totalItems={this.state.totalItems}
           totalPrice={this.state.totalPrice} />
-      
 
+          {this.state.totalItems != 0 && cartIsClicked && cartIsOpen &&
           <CartHeader
             totalItems={this.state.totalItems}
-            totalPrice={this.state.totalPrice} />
+            totalPrice={this.state.totalPrice} />}
 
-
-        
         <div className="cart-row">
           {this.state.cartItems.map((roll, idx) => {
-            if (this.state.totalItems != 0 && this.state.showCart){
+            if (this.state.totalItems != 0 && this.state.showCart && cartIsOpen) {
               return <Cart 
                 key={idx}
                 elementID={idx}
@@ -245,11 +242,11 @@ class App extends Component {
                 removeRoll={this.removeRollButton} />
             }
           })}
-          <div className="center"> 
-            {this.state.totalItems == 0 && <p>Your cart is empty!</p>}
-          </div>
-        </div>  
+          
+          {this.state.totalItems == 0 && cartIsClicked && <p>Your cart is empty!</p>}
 
+        </div>  
+        {this.state.totalItems != 0 && cartIsClicked && cartIsOpen && <hr className="line-divide"/>}
         <SearchBar
           filterRolls = {this.filterRollButton}
           sortRolls={this.sortRollButton} /> 

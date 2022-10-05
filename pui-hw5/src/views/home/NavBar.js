@@ -30,14 +30,6 @@ class NavBar extends Component {
                 <div className="description">
                   Our hand-made cinnamon rolls
                 </div>
-                {/* <div className="header-bar-text">
-                  <div className="total-items" id="total-items"> 
-                      Shopping Cart ({this.props.totalItems} items)
-                  </div>
-                  <div className="total-price" id="total-price">
-                      Total: ${this.props.totalPrice}
-                  </div>
-                </div> */}
             </div>
         </div>
       );
