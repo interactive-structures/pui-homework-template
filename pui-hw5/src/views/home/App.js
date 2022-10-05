@@ -252,7 +252,7 @@ class App extends Component {
             }
           })}
           
-          {this.state.totalItems == 0 && cartIsClicked && <p>Your cart is empty!</p>}
+          {this.state.totalItems == 0 && cartIsClicked && cartIsOpen && <p>Your cart is empty!</p>}
 
         </div>  
         {this.state.totalItems != 0 && cartIsClicked && cartIsOpen && <hr className="line-divide"/>}
