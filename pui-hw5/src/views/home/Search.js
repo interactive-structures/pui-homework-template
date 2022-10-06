@@ -14,11 +14,12 @@ class SearchBar extends Component {
     this.sortByChanged=this.sortByChanged.bind(this);
   }
 
+  // returns user's search query back to App.js
   searchButtonClicked(){
-    console.log(this.state.searchBar);
     return this.state.searchBar;
   }
 
+  // updates variable that stores what the user entered into the search bar
   searchBarChanged(e){
     this.setState(prevState => ({
       ...prevState,
@@ -27,10 +28,10 @@ class SearchBar extends Component {
   }
 
   changeSortDelay(){
-    // console.log(this.state.sortBy);
     this.props.sortRolls(this.state.sortBy);
   }
 
+  // tells App.js whether to sort by name or base price
   sortByChanged(e){
     this.setState(prevState => ({
       ...prevState,

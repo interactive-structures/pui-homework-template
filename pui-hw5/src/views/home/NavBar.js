@@ -35,6 +35,5 @@ class NavBar extends Component {
       );
     }
   }
-  //onClick={this.searchButtonClicked}
   
   export default NavBar

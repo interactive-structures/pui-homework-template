@@ -10,6 +10,7 @@ let displayRollCount = 0;
 let displayCart = false;
 let cartIsClicked = false;
 let cartIsOpen = false;
+let sortByPrice = true;
 
 class App extends Component {
   constructor(props) {
@@ -98,6 +99,7 @@ class App extends Component {
     this.sortRollButton(0);
   }
 
+  // adds rolls to the cart and DOM
   addCartButton = (roll) => {
     this.state.cartItems.push(roll);
 
@@ -140,9 +142,7 @@ class App extends Component {
     }))
   }
 
-  delay(){
-    console.log(this.state.rollData);
-  }
+  // sorts rolls by name/base price
   sortRollButton = (order) => {
     const sortProperty = this.sortName[order];
 
@@ -163,9 +163,9 @@ class App extends Component {
     this.setState(prevState => ({
       ...prevState,
       rollData: sorted
-    }),()=> this.delay())
+    }))
   }
-  
+  // changes displayed price, pack, and glazing for each roll
   changeOverallPrice(idx, price, pack, glaze){
     const rollDataTemp = [...this.state.rollData];
     rollDataTemp[idx].displayPrice = price;
@@ -187,6 +187,7 @@ class App extends Component {
     console.log(this.state.totalPrice);
   }
 
+  // removes rolls from cart and DOM
   removeRollButton(rollIndex){
     let newTotalPrice = this.state.totalPrice - this.state.cartItems[rollIndex].displayPrice;
 
@@ -202,6 +203,7 @@ class App extends Component {
       }),() => this.removeDelay())
     }
     
+    // cart is empty case
     else{
       this.setState(prevState => ({
         ...prevState,
@@ -223,11 +225,13 @@ class App extends Component {
           totalItems={this.state.totalItems}
           totalPrice={this.state.totalPrice} />
 
+          {/* total items and total price for the cart */}
           {this.state.totalItems != 0 && cartIsClicked && cartIsOpen &&
           <CartHeader
             totalItems={this.state.totalItems}
             totalPrice={this.state.totalPrice} />}
 
+        {/* displays items in the cart */}
         <div className="cart-row">
           {this.state.cartItems.map((roll, idx) => {
             if (this.state.totalItems != 0 && this.state.showCart && cartIsOpen) {
@@ -245,12 +249,15 @@ class App extends Component {
           {this.state.totalItems == 0 && cartIsClicked && cartIsOpen && <p>The cart is empty!</p>}
         </div>  
         {this.state.totalItems != 0 && cartIsClicked && cartIsOpen && <hr className="line-divide"/>}
+
+        {/* search bar for roll items */}
         <SearchBar
           filterRolls = {this.filterRollButton}
           sortRolls={this.sortRollButton} /> 
         
         {/* 3 cinnamon rolls displayed per row, pass in corresponding image, name, price */}
         <div className="row">
+
         {this.state.rollData.map((roll, idx) => {
           if ((this.state.filterRoll == null || roll.rollName.toLowerCase().includes(this.state.filterRoll.toLowerCase()))) {
             this.changeTextDisplay();
