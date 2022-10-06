@@ -73,7 +73,6 @@ class App extends Component {
         },
       ],
       cartItems: [],
-      // packSize: 1,
       glazingOption: "Keep original",
       showCart: false,
       totalItems: 0,
@@ -85,7 +84,6 @@ class App extends Component {
       1: "rollName"
     }
     
-
     let filterRoll = null;
 
     this.filterRoll = filterRoll;
@@ -104,7 +102,6 @@ class App extends Component {
     this.state.cartItems.push(roll);
 
     let cartItemTemp = [...this.state.cartItems];
-    console.log("LIST: " + cartItemTemp.imageURL);
 
     let newTotalPrice = this.state.totalPrice + roll.displayPrice;
     let newTotalItems = this.state.totalItems + 1;
@@ -119,11 +116,6 @@ class App extends Component {
 
   displayDelay(){
     cartIsClicked = true;
-    console.log("you pressed the CART button");
-    console.log("totalItems: " + this.state.totalItems);
-    console.log("cartIsClicked: " + cartIsClicked);
-    console.log("showCart: "+ this.state.showCart);
-    console.log("cartOpen:" + cartIsOpen);
     cartIsOpen = !cartIsOpen;
   }
 
@@ -131,7 +123,7 @@ class App extends Component {
     this.setState(prevState => ({
       ...prevState,
       showCart: true
-    })) //,() => this.displayDelay()
+    }))
     this.displayDelay()
   };
 
@@ -148,6 +140,9 @@ class App extends Component {
     }))
   }
 
+  delay(){
+    console.log(this.state.rollData);
+  }
   sortRollButton = (order) => {
     const sortProperty = this.sortName[order];
 
@@ -168,18 +163,14 @@ class App extends Component {
     this.setState(prevState => ({
       ...prevState,
       rollData: sorted
-    }))
-
-    console.log("Roll Data")
-    console.log(sorted)
+    }),()=> this.delay())
   }
   
   changeOverallPrice(idx, price, pack, glaze){
     const rollDataTemp = [...this.state.rollData];
     rollDataTemp[idx].displayPrice = price;
-    rollDataTemp[idx].packSize = pack;
+    rollDataTemp[idx].packSize = parseInt(pack);
     rollDataTemp[idx].glazingName = glaze;
-
 
     console.log(idx);
     console.log("p: " + rollDataTemp[idx].displayPrice);
@@ -192,7 +183,7 @@ class App extends Component {
 
   removeDelay(){
     console.log(this.state.rollData);
-    console.log("W: " + this.state.totalItems);
+    console.log(this.state.totalItems);
     console.log(this.state.totalPrice);
   }
 
@@ -251,9 +242,7 @@ class App extends Component {
                 removeRoll={this.removeRollButton} />
             }
           })}
-          
-          {this.state.totalItems == 0 && cartIsClicked && cartIsOpen && <p>Your cart is empty!</p>}
-
+          {this.state.totalItems == 0 && cartIsClicked && cartIsOpen && <p>The cart is empty!</p>}
         </div>  
         {this.state.totalItems != 0 && cartIsClicked && cartIsOpen && <hr className="line-divide"/>}
         <SearchBar
