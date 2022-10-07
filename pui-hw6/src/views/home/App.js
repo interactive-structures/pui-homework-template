@@ -1,0 +1,309 @@
+import React, { Component } from 'react';
+import './App.css';
+import Roll from './Roll';
+import NavBar from './NavBar';
+import SearchBar from './Search';
+import Cart from './Cart';
+import CartHeader from './CartHeader';
+
+let displayRollCount = 0;
+let displayCart = false;
+let cartIsClicked = false;
+let cartIsOpen = false;
+let sortByPrice = true;
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    // localStorage.clear();
+    this.state = {
+      // roll array with six objects--one of each type of cinnamon roll
+      rollData: [
+        {
+          imageURL: "/pui-assignments/pui-hw6/assets/original-cinnamon-roll.jpg",
+          rollName: "Original cinnamon roll",
+          rollPrice: 2.49,
+          packSize: 1,
+          glazingName: "Keep original",
+          displayPrice: 2.49,
+          elementID: "original_roll"
+        },
+        {
+          imageURL: "/pui-assignments/pui-hw6/assets/apple-cinnamon-roll.jpg",
+          rollName: "Apple cinnamon roll",
+          rollPrice: 3.49,
+          packSize: 1,
+          glazingName: "Keep original",
+          displayPrice: 3.49,
+          elementID: "apple_roll"
+        },
+        {
+          imageURL: "/pui-assignments/pui-hw6/assets/raisin-cinnamon-roll.jpg",
+          rollName: "Raisin cinnamon roll",
+          rollPrice: 2.99,
+          packSize: 1,
+          glazingName: "Keep original",
+          displayPrice: 2.99,
+          elementID: "raisin_roll"
+        },
+        {
+          imageURL: "/pui-assignments/pui-hw6/assets/walnut-cinnamon-roll.jpg",
+          rollName: "Walnut cinnamon roll",
+          rollPrice: 3.49,
+          packSize: 1,
+          glazingName: "Keep original",
+          displayPrice: 3.49,
+          elementID: "walnut_roll"
+        },
+        {
+          imageURL: "/pui-assignments/pui-hw6/assets/double-chocolate-cinnamon-roll.jpg",
+          rollName: "Double-chocolate cinnamon roll",
+          rollPrice: 3.99,
+          packSize: 1,
+          glazingName: "Keep original",
+          displayPrice: 3.99,
+          elementID: "choc_roll"
+        },
+        {
+          imageURL: "/pui-assignments/pui-hw6/assets/strawberry-cinnamon-roll.jpg",
+          rollName: "Strawberry cinnamon roll",
+          rollPrice: 3.99,
+          packSize: 1,
+          glazingName: "Keep original",
+          displayPrice: 3.99,
+          elementID: "strawberry_roll"
+        },
+      ],
+      cartItems: JSON.parse(localStorage.getItem("cartItems")) || [],
+      glazingOption: "Keep original",
+      showCart: false,
+      totalItems: localStorage.getItem("cartItems") == null ? 0 : localStorage.getItem("cartItems").length,
+      totalPrice: 0,
+    }
+
+    let sortName = { //corresponding glaze names with prices
+      0: "rollPrice",
+      1: "rollName"
+    }
+    
+    let filterRoll = null;
+
+    this.filterRoll = filterRoll;
+    this.sortName = sortName;
+    this.sortRollButton = this.sortRollButton.bind(this);
+    this.changeOverallPrice = this.changeOverallPrice.bind(this);
+    this.displayCartButton = this.displayCartButton.bind(this);
+    this.removeRollButton = this.removeRollButton.bind(this);
+  }
+
+  componentDidMount() {
+    this.sortRollButton(0);
+    this.state.totalPrice = localStorage.getItem("cartItems") == null ? 0 : this.calculateTotalPrice()
+    // called when the component is first mounted
+    localStorage.setItem("cartItems", JSON.stringify(this.state.cartItems));
+    console.log(this.state.cartItems);
+  }
+
+  componentDidUpdate() {
+    // called when there are updates in the component e.g., state changes
+    localStorage.setItem("cartItems", JSON.stringify(this.state.cartItems));
+  }
+
+  calculateTotalPrice(){
+    let totalPrice = 0;
+    if (this.state.cartItems != null){
+      {this.state.cartItems.map(roll => {
+        totalPrice += roll.displayPrice;
+      })}
+    }
+    return totalPrice;
+  }
+
+  // adds rolls to the cart and DOM
+  addCartButton = (roll) => {
+    this.state.cartItems.push(roll);
+
+    let cartItemTemp = [...this.state.cartItems];
+
+    let newTotalPrice = this.state.totalPrice + roll.displayPrice;
+    let newTotalItems = this.state.totalItems + 1;
+
+    this.setState(prevState => ({
+      ...prevState,
+      cartItems: cartItemTemp,
+      totalPrice: newTotalPrice,
+      totalItems: newTotalItems
+    }),() => this.removeDelay())
+    localStorage.setItem("cartItems", JSON.stringify(this.state.cartItems));
+    console.log(this.state.cartItems);
+  };
+
+  displayDelay(){
+    cartIsClicked = true;
+    cartIsOpen = !cartIsOpen;
+  }
+
+  displayCartButton = () => {
+    this.setState(prevState => ({
+      ...prevState,
+      showCart: true
+    }))
+    this.displayDelay()
+  };
+
+  changeTextDisplay = () => {
+    displayRollCount = 1;
+  }
+
+  filterRollButton = (query) => {
+    displayRollCount = 0;
+    
+    this.setState(prevState => ({
+      ...prevState,
+      filterRoll: query
+    }))
+  }
+
+  // sorts rolls by name/base price
+  sortRollButton = (order) => {
+    const sortProperty = this.sortName[order];
+
+    const sorted =
+      [...this.state.rollData].sort((a, b) => {
+          const nameA = a[sortProperty]; 
+          const nameB = b[sortProperty];
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          // names must be equal
+          return 0;
+        });
+      
+    this.setState(prevState => ({
+      ...prevState,
+      rollData: sorted
+    }))
+  }
+  // changes displayed price, pack, and glazing for each roll
+  changeOverallPrice(idx, price, pack, glaze){
+    const rollDataTemp = [...this.state.rollData];
+    rollDataTemp[idx].displayPrice = price;
+    rollDataTemp[idx].packSize = parseInt(pack);
+    rollDataTemp[idx].glazingName = glaze;
+
+    console.log(idx);
+    console.log("p: " + rollDataTemp[idx].displayPrice);
+    console.log("s: " + rollDataTemp[idx].packSize);
+    console.log("g: " + rollDataTemp[idx].glazingOption);
+    this.setState({ 
+      rollData: rollDataTemp 
+    }, ()=>this.removeDelay());
+  }
+
+  removeDelay(){
+
+    console.log(this.state.totalItems);
+    console.log(this.state.totalPrice);
+  }
+
+  // removes rolls from cart and DOM
+  removeRollButton(rollIndex){
+    let newTotalPrice = this.state.totalPrice - this.state.cartItems[rollIndex].displayPrice;
+
+    let newTotalItems = this.state.totalItems - 1;
+    const newcartItems = this.state.cartItems;
+    if (this.state.cartItems.length >= 1){
+      newcartItems.splice(rollIndex, 1);
+      this.setState(prevState => ({
+        ...prevState,
+        cartItems: newcartItems,
+        totalPrice: newTotalPrice,
+        totalItems: newTotalItems
+      }),() => this.removeDelay())
+      localStorage.setItem("cartItems", JSON.stringify(this.state.cartItems));
+      console.log(this.state.cartItems);
+    }
+    
+    // cart is empty case
+    else{
+      this.setState(prevState => ({
+        ...prevState,
+        cartItems: [],
+        totalPrice: 0,
+        totalItems: 0
+      }),() => this.removeDelay())
+    }
+  }
+
+  render() {
+    return (
+      <div className="App">
+        {/* header bar for the Bun Bun Shop webpage */}
+        <NavBar 
+          logo="/pui-assignments/pui-hw6/assets/logo-01.svg" 
+          cartItems={this.state.cartItems.length}
+          displayCart = {this.displayCartButton} 
+          totalItems={this.state.totalItems}
+          totalPrice={this.state.totalPrice} />
+
+          {/* total items and total price for the cart */}
+          {this.state.cartItems.length != 0 && cartIsClicked && cartIsOpen &&
+          <CartHeader
+            totalItems={this.state.cartItems.length}
+            totalPrice={this.state.totalPrice} />}
+
+        {/* displays items in the cart */}
+        <div className="cart-row">
+          {this.state.cartItems.map((roll, idx) => {
+            if (this.state.cartItems.length != 0 && this.state.showCart && cartIsOpen) {
+              return <Cart 
+                key={idx}
+                elementID={idx}
+                imageURL={roll.imageURL}
+                rollName={roll.rollName}
+                glazingName={roll.glazingName}
+                packSize={roll.packSize}
+                displayPrice={roll.displayPrice} 
+                removeRoll={this.removeRollButton} />
+            }
+          })}
+          {this.state.cartItems.length == 0 && cartIsClicked && cartIsOpen && <p>The cart is empty!</p>}
+        </div>  
+        {this.state.cartItems.length != 0 && cartIsClicked && cartIsOpen && <hr className="line-divide"/>}
+
+        {/* search bar for roll items */}
+        <SearchBar
+          filterRolls = {this.filterRollButton}
+          sortRolls={this.sortRollButton} /> 
+        
+        {/* 3 cinnamon rolls displayed per row, pass in corresponding image, name, price */}
+        <div className="row">
+
+        {this.state.rollData.map((roll, idx) => {
+          if ((this.state.filterRoll == null || roll.rollName.toLowerCase().includes(this.state.filterRoll.toLowerCase()))) {
+            this.changeTextDisplay();
+            
+            return <Roll 
+              key={idx}
+              elementID={idx}
+              imageURL={roll.imageURL}
+              rollName={roll.rollName}
+              rollPrice={roll.rollPrice}
+              glazingName={roll.glazingName}
+              packIndex={roll.packIndex}
+              displayPrice={roll.displayPrice}
+              addCart={this.addCartButton} 
+              changeOverallPrice={(num, num1, num2) => this.changeOverallPrice(idx, num, num1, num2)} />;
+          }
+        })}
+        {displayRollCount == 0 && <p>No match!</p>}
+        </div>
+      </div>
+    );
+  }
+}
+
+export default App;

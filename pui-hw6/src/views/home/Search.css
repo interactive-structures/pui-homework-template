@@ -1,0 +1,10 @@
+.header-bar {
+    align-items: center; 
+    display: flex;
+    margin: auto;
+}
+
+/* search bar */
+.search {
+    margin: 0 35px 0 108px;
+}
