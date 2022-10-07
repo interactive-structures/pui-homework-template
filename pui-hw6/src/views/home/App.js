@@ -98,6 +98,7 @@ class App extends Component {
 
   componentDidMount() {
     this.sortRollButton(0);
+    //sets total price of cart
     this.state.totalPrice = localStorage.getItem("cartItems") == null ? 0 : this.calculateTotalPrice()
     // called when the component is first mounted
     localStorage.setItem("cartItems", JSON.stringify(this.state.cartItems));
