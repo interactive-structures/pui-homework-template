@@ -99,15 +99,20 @@ a {
 
 }
 
-.flex-container {
+.parent-flex {
     display: flex;
     flex-wrap: wrap;
     font-size: 30px;
     padding: 20px 45px 60px 45px;
+    align-items: center;
   }
   
   .flex-item-left {
     flex: 30%;
+  }
+
+  .left {
+    flex: 60%;
   }
   
   .flex-item-right {
@@ -142,8 +147,8 @@ a {
  
 
   /* Responsive layout - makes a one column-layout instead of a two-column layout */
-  @media only screen and (max-width: 600px) {
-    .flex-item-right, .flex-item-left {
+  @media (max-width: 600px) {
+    .flex-item-right, .flex-item-left, .left {
       flex: 100%;
     }
   }
