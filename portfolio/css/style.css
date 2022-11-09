@@ -16,9 +16,92 @@ body {
 }
 .navbar-item {
     margin: 0 20px;
+    font-weight: 600;
 }
 
 a {
     color: #000;
     text-decoration: none;
 }
+
+.huarui-logo {
+    font-weight: bolder;
+    width: 55px;
+    color: #D0ECBC;
+}
+
+.flex {
+    display: flex;
+    gap: var(--gap, 1rem);
+}
+
+.logo {
+    margin: 1rem;
+}
+
+.primary-header {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.primary-navigation {
+    list-style: none;
+    padding: 0;
+    margin: 0 50px;
+    font-weight: 600;
+
+}
+
+.space {
+    margin: 0 0 0 50px;
+}
+
+.space:hover {
+    color: #80B957;
+}
+
+.intro {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.intro-text {
+    flex: 20%;
+}
+
+.jump {
+    flex: 1 0 auto;
+    max-width: 300px;
+}
+.section-header {
+    font-size: 45px;
+    font-weight: 900px;
+}
+.green-font {
+    color: #80B957;
+}
+.body-text{
+    font-weight: 600px;
+}
+
+@media screen and (max-width:35em) {
+    .container { flex-wrap: wrap;  }
+    .item:first-child { flex-basis: 100%; }
+  }
+
+/* 
+@media screen and (max-width: 35em) {
+    .primary-navigation {
+        position: fixed;
+        inset: 0 0 0 30%;
+        flex-direction: column;
+        padding: min(10vh, 10rem) 2em;
+        
+    }
+} */
+
+/* .primary-navigation a > span {
+    font-weight: 700;
+    margin-inline-end: 0.75em;
+} */

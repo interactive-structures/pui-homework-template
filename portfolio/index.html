@@ -6,21 +6,44 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
     
         <link rel="stylesheet" href="css/style.css">
+        <script defer src="js/app.js"></script>
+
     </head>
     <body>
-        <header class = "header">
-            <h1 id = "huarui">
-                Huarui Lai
+        <header class="primary-header flex">
+            <h1 class="logo">
+                <img class="huarui-logo" alt="personal-logo" src="assets/huarui-logo.PNG" />
             </h1>
-            <nav class = "menu">
-
-                    <a href="#projects" class="navbar-item">Projects</a>
-
-                    <a href = "#resume" class = "navbar-item ">Resume</a>
-
-                    <a href = "#about" class = "navbar-item">About</a>
-
+            <nav>
+                <ul id="primary-navigation" class="primary-navigation flex">
+                    <li>
+                        <a href="resume.html" class="space">
+                            Resume
+                        </a>
+                    </li>
+                    <li>
+                        <a href="about.html" class="space">
+                            About
+                        </a>
+                    </li>
+                </ul>
             </nav>
         </header>
+
+        <section>
+            <div> 
+                <div class="intro">
+                    <div class="intro-text">
+                        <p class="section-header">Huarui Lai</p>
+                        <p class="body-text">Hi! I’m an aspiring <span class="green-font">UI/UX designer</span>
+                         and current sophomore at Carnegie Mellon University studying 
+                         <span class="green-font">Information Systems</span> and 
+                         <span class="green-font">Human-Computer Interaction.</span>
+                         Welcome to my design portfolio.</p>
+                    </div>
+                    <img class="jump" alt="jump" src="assets/jump.jpg" />
+                </div>
+            </div>
+        </section>
     </body>
 </html>
