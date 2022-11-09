@@ -101,6 +101,7 @@ a {
 
 .parent-flex {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     font-size: 30px;
     padding: 20px 45px 60px 45px;
@@ -147,8 +148,8 @@ a {
  
 
   /* Responsive layout - makes a one column-layout instead of a two-column layout */
-  @media (max-width: 600px) {
-    .flex-item-right, .flex-item-left, .left {
+  @media screen and (max-width: 600px) {
+    .flex-item-right, .flex-item-left, .left, .roll-image {
       flex: 100%;
     }
   }
