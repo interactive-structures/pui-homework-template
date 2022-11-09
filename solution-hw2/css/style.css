@@ -51,6 +51,11 @@ body {
     text-align: right;
 }
 
+.cap {
+    /* max-width: 40%; */
+    border-radius: 5%;
+}
+
 .custom-select { /* border for the select menu */
     border: 2px solid black;
     background-color: white;
@@ -135,8 +140,7 @@ body {
 }
 
 .roll-image {
-    width: 225px;
-    height: 225px;
+    width: 40%;
     flex: 0 0 auto; 
     outline-color: black;
     outline-style: solid;
@@ -146,7 +150,7 @@ body {
 .row {
     display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: space-between; 
 }
 
 .row-item { /* each cinnamon roll item in a row */
