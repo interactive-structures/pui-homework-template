@@ -1,5 +1,11 @@
+/* * {
+  padding: 0px;
+  margin: 0px;
+} */
+
 body {
     font-family: "Inter", sans-serif;
+    width: 100%;
   }
 
 .header {
@@ -134,9 +140,13 @@ a {
     justify-content: space-evenly; 
 }
 
-.proj { /* each cinnamon roll item in a row */
+.proj {
     margin: 20px;
     align-items: center;
+
+    /* adding anime.js */
+    opacity: 0;
+    background-color: lightgrey;
 }
 
 .roll-image {
@@ -179,4 +189,12 @@ a {
     .flex-item-right, .flex-item-left, .left, .roll-image {
       flex: 100%;
     }
+  }
+
+
+  .circle {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: red;
   }
