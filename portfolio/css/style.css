@@ -6,6 +6,8 @@
 body {
     font-family: "Inter", sans-serif;
     width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
 .header {
@@ -25,6 +27,9 @@ body {
     font-weight: 600;
 }
 
+.nav-bar{
+  background-color: rgba(255, 255, 255, 0.9);
+}
 a {
     color: #000;
     text-decoration: none;
@@ -49,6 +54,11 @@ a {
 .primary-header {
     align-items: center;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 100;
 }
 
 .primary-navigation {
@@ -119,11 +129,23 @@ a {
     font-size: 30px;
     padding: 20px 45px 60px 45px;
     align-items: center;
+    
   }
   
   .flex-item-left {
     flex: 30%;
   }
+
+  .jamjelly{
+    z-index: 5;
+    display: none;
+  }
+  .show{
+    display: inline;
+  }
+  /* .hide {
+    display: none;
+  } */
 
   .left {
     flex: 60%;
@@ -146,7 +168,6 @@ a {
 
     /* adding anime.js */
     opacity: 0;
-    background-color: lightgrey;
 }
 
 .roll-image {
@@ -165,11 +186,12 @@ a {
 
   .services {
     padding: 30px 0; 
+    position: relative;
   }
 
   .footer {
     background-color: #D0ECBC;
-    margin: 7px;
+    padding: 7px;
   }
 
   .services-list{
@@ -182,6 +204,12 @@ a {
     max-width: 100%;
     text-align: center;
     font-weight: 575;
+    position: relative;
+  }
+
+  .proj-thumbnail {
+    /* width: 100%; */
+    position: absolute;
   }
 
   /* Responsive layout - makes a one column-layout instead of a two-column layout */
