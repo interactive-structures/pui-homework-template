@@ -42,8 +42,8 @@ function easeIn(id, animation){
         }
         else{
             console.log("second");
-            animation.seek(((-2/h)*y + ((2*H)/h-2))*1000);
-            // animation.seek(((-1/h)*y + (H/h-1))*1000);
+            // animation.seek(((-2/h)*y + ((2*H)/h-2))*1000);
+            animation.seek(((-1/h)*y + (H/h-1))*1000);
         }
     });
 }
