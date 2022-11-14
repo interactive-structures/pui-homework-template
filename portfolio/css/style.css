@@ -199,7 +199,32 @@ a {
     justify-items: center;
     /* display: flex; */
   }
+
+  .progImg {
+    /* position: relative;
+    width: 400px; */
+  }
+
+  .overlay {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background:rgba(255, 255, 255, 0.6);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+  }
+
+  .blur {
+    backdrop-filter: blur(5px);
+  }
  
+  .overlay:hover{
+    opacity: 1;
+  }
   .proj {
     max-width: 100%;
     text-align: center;
